@@ -1,0 +1,85 @@
+body {
+    overflow-x: hidden;
+}
+
+.NavBar {
+    position: relative;
+    font-family: var(--font-sec);
+}
+
+.NavBar>img {
+    position: absolute;
+    width: 154%;
+    right: -75%;
+    z-index: -1;
+    opacity: .5;
+    transform: rotate(-150deg);
+}
+
+
+.Header {
+    display: flex;
+    align-items: center;
+    transition: var(--transition-medium);
+    justify-content: space-between;
+}
+
+.Header .logo {
+    position: relative;
+    left: -10%;
+}
+
+.Header .logo img {
+    width: 180px;
+}
+
+.Header .Links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transition: var(--transition-medium);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Header .Links li a {
+    color: var(--color-primary-dark);
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    transition: var(--transition-medium);
+    position: relative;
+}
+
+.Header .Links li a:hover {
+    color: var(--color-primary-dark);
+    transform: scale(1.1);
+}
+
+.Header button {
+    color: white;
+    opacity: .7;
+    background-color: var(--color-primary-dark);
+    transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+.Header button:hover {
+    color: white;
+    background-color: var(--color-primary-dark);
+    transform: scale(1.1);
+}
+
+/* .Logged {
+    height: 32px;
+    padding: 0 14px;
+    gap: 0;
+    border-radius: 20px;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border: 1px solid var(--color-primary-dark);
+} */

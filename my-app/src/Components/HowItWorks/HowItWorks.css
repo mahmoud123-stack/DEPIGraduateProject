@@ -1,0 +1,163 @@
+.HowItWorks {
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    height: 90vh;
+    font-family: var(--font-for);
+    margin-top: -5%;
+}
+
+.HowItWorks .MainContent {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    height: 60%;
+}
+
+.HowItWorks .MainContent .Heading {
+    width: 40%;
+}
+
+.HowItWorks .MainContent .TimeLine {
+    flex: 1;
+    height: 100%;
+}
+
+.HowItWorks .MainContent .TimeLine .steps {
+    position: relative;
+    height: 100%;
+}
+
+.HowItWorks .MainContent .TimeLine .Step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    position: absolute;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.HowItWorks .MainContent .TimeLine .Step svg {
+    top: 50%;
+    right: 110%;
+    position: absolute;
+    /* opacity: .1; */
+    transform: rotate(190deg);
+}
+
+.HowItWorks .MainContent .TimeLine .steps :last-child svg {
+    display: none;
+}
+
+.HowItWorks .container .TimeLine .Step::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 9px solid white;
+    background-color: #14b8a6;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    top: 47%;
+    left: -2%;
+}
+
+.HowItWorks .container .TimeLine :nth-child(2)::before {
+    top: 45%;
+    left: -5%;
+}
+
+.HowItWorks .container .TimeLine :last-child::before {
+    top: 10%;
+    left: 30%;
+}
+
+
+.HowItWorks .MainContent .TimeLine .Step .dotNumber {
+    position: absolute;
+    color: #ddd;
+    opacity: .3;
+    font-size: 200px;
+    right: -5%;
+    top: -25px;
+    font-weight: bold;
+}
+
+.HowItWorks .MainContent .TimeLine .Step h3 {
+    font-size: 23px;
+    font-family: var(--font-for);
+    font-weight: 500;
+    color: #315079;
+    z-index: 1000;
+}
+
+.HowItWorks .MainContent .steps> :first-child {
+    top: 20%;
+    right: 10%;
+}
+
+.HowItWorks .MainContent .steps> :nth-child(2) {
+    top: 55%;
+    right: 32%;
+}
+
+.HowItWorks .MainContent .steps> :nth-child(3) {
+    top: 90%;
+    right: 60%;
+}
+
+.HowItWorks .MainContent .steps> :nth-child(3) h3 {
+    width: 60%;
+    text-align: end;
+    margin-top: 20px;
+}
+
+.HowItWorks .MainContent .Heading {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 30%;
+    align-items: start;
+    font-style: italic;
+}
+
+.HowItWorks .MainContent .Heading span {
+    font-size: 18px;
+    padding: 0px 13px;
+    background-color: #eee;
+    border-radius: 20px;
+    color: #16a34a;
+}
+
+.HowItWorks .MainContent .Heading h2 {
+    font-size: 30px;
+
+    color: #1a2a47;
+}
+
+.HowItWorks .MainContent .Heading p {
+    line-height: 2;
+    font-size: 18px;
+}
+
+.flow-action-btn {
+    background-color: #1a2a47;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.flow-action-btn:hover {
+    background-color: #ff6b4a;
+    transform: translateY(-2px);
+}

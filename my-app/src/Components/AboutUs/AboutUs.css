@@ -1,0 +1,115 @@
+.AboutUs {
+    font-family: var(--font-for);
+    margin-top: -50px;
+}
+
+.AboutUs .container {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.AboutUs .container .image {
+    flex: 1;
+    position: relative;
+}
+
+.AboutUs .container .image img {
+    object-fit: cover;
+    margin-top: -50px;
+}
+
+.AboutUs .container .Explain {
+    flex: 1;
+    margin-top: -7%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: justify;
+    font-style: italic;
+}
+
+.AboutUs .container .Explain .heading {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.AboutUs .container .Explain .heading h3 {
+    font-size: 32px;
+    width: 70%;
+    color: var(--color-primary-dark);
+}
+
+.AboutUs .container .Explain .heading span {
+    font-size: 20px;
+    padding: 0px 13px;
+    background-color: #eee;
+    border-radius: 20px;
+    color: #16a34a;
+}
+
+.AboutUs .container .Explain .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.AboutUs .container .Explain .content p {
+    font-size: 19px;
+    color: var(--color-text-secondary);
+    line-height: 2;
+    width: 90%;
+
+}
+
+.AboutUs .container .Explain button {
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    background-color: var(--color-primary-dark);
+    color: white;
+}
+
+
+
+
+.AboutUs .container .image .PaperPlaneImg {
+    position: absolute;
+    top: 7%;
+    left: -7px;
+    transform: rotate(20deg);
+    width: 80px;
+    transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.AboutUs .container .image .PaperPlaneImg:hover {
+    top: 6%;
+    left: 15px;
+    transform: rotate(20deg);
+
+}
+
+.AboutUs .container .Quote {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 11px;
+    width: 13%;
+    top: -5%;
+    padding: 10px 15px;
+    background-color: #adb9c930;
+    border-radius: 20px;
+    color: var(--color-text-secondary);
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, .1);
+    left: 10%;
+    transform: rotate(15deg);
+}
+
+.AboutUs .container .Quote h5 {
+    font-size: 13px;
+    line-height: 1.2;
+}

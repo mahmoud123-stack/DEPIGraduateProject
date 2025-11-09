@@ -1,0 +1,76 @@
+.Features {
+    height: 100vh;
+}
+
+.Features .container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    position: relative;
+}
+
+.Features .container .content {
+    flex: 1;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+    font-family: var(--font-for);
+    position: relative;
+}
+
+.Features .container .content .card {
+    display: flex;
+    padding: 20px 30px;
+    width: 35%;
+    font-size: 17px;
+    transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    border: none;
+    /* box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.1); */
+    position: relative;
+    border-radius: 20px;
+}
+
+.Features .container .content .card::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 10%;
+    height: 10%;
+    background-color: #315079;
+    opacity: 0;
+    transition: all .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 20px;
+}
+
+.Features .container .content .card svg {
+    transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    opacity: 1;
+}
+
+.Features .container .content .card:hover::after {
+    width: 100%;
+    height: 100%;
+    opacity: .1;
+    top: 0;
+    left: 0;
+    transform: translate(0);
+}
+
+.Features .container .content .card h3 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.Features .container .content .card p {
+    margin: 0;
+    font-size: 19px;
+    color: var(--color-text-secondary);
+}
