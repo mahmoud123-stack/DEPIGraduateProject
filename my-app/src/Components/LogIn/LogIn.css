@@ -1,0 +1,138 @@
+.LogIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-for);
+}
+
+.LogIn .container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.LogIn>img {
+    position: absolute;
+    width: 190%;
+    left: -80%;
+    z-index: -1000;
+    opacity: 0;
+    transform: rotate(150deg);
+}
+
+
+/* .LogIn .image {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    top: 70px;
+    left: 0;
+} */
+
+.LogIn .container .create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-style: normal;
+}
+
+.LogIn .container .create p {
+    text-decoration: none;
+    color: #6b728090;
+}
+
+.LogIn .container .create p a {
+    text-decoration: none;
+}
+
+.LogIn .container .content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.LogIn .container .content .form .Text h2 {
+    font-size: 40px;
+    margin: 0;
+    color: #023e8a;
+    margin-bottom: 10px;
+}
+
+
+.LogIn .container .content p {
+    color: #6b728090;
+}
+
+.LogIn .container .content .form {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.LogIn .container .content .form form {
+    gap: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LogIn .container .content .image {
+    flex: 1;
+
+}
+
+.LogIn .container .content .image img {
+    width: 90%;
+}
+
+.ant-form-item {
+    width: 60%;
+    align-items: start;
+    flex-direction: column;
+}
+
+.ant-input {
+    color: #6b7280bd !important;
+    padding: 8px !important;
+
+}
+
+.LogIn .container .content .form form button.bottn {
+    background-color: #023e8a;
+    font-size: 20px;
+    font-style: normal;
+    transition: all .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    height: 50px;
+
+    &:hover {
+        transform: scale(1);
+    }
+
+    &>span {
+        display: flex;
+    }
+
+    &:disabled {
+        opacity: .4 !important;
+    }
+}
+
+.ant-form-item-explain {
+    height: 20px;
+    position: absolute;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.ant-message-notice-content {
+    font-size: 16px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 100px rgba(0, 0, 0, 0.3);
+}

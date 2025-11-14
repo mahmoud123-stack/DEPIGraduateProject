@@ -1,0 +1,65 @@
+.HowItWorks {
+    height: 90vh;
+    font-family: var(--font-for);
+}
+
+.HowItWorks .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.steps {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+    align-items: stretch;
+    margin-top: 30px;
+}
+
+.steps> :nth-child(2) {
+    background-color: #31507967;
+    transform: translateY(-5%);
+}
+
+.Step {
+    border-radius: 16px;
+    transform: translateY(5%);
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+.Step .dotNumber {
+    font-size: 110px;
+    font-weight: bold;
+    color: #ddd;
+    opacity: .4;
+}
+
+.Step .stepContent div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.Step .stepContent h3 {
+    font-size: 23px;
+    font-weight: 500;
+    color: #315079;
+    margin: 0;
+}
+
+.Step .stepContent p {
+    margin: 0;
+    font-size: 18px;
+    /* width: 90%; */
+    line-height: 2;
+    color: var(--color-text-secondary);
+}

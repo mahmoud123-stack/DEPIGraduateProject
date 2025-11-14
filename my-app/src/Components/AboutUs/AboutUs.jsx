@@ -5,6 +5,7 @@ import { useCustomCursor } from "../Cursor/Cusror";
 import { motion } from "framer-motion";
 import paperplane from "../../Assets/paper-plane.png";
 import WhoUs2 from "../../Assets/Road Planning.svg";
+import Button from "../Button/Button";
 
 export default function AboutUs() {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
@@ -35,19 +36,8 @@ export default function AboutUs() {
               intelligent insights into your skills and interests.
             </p>
           </div>
-          <Link to="/about">
-            <button
-              className="btn"
-              onMouseEnter={handleHover}
-              onMouseLeave={handleLeave}
-            >
-              Read More
-            </button>
-          </Link>
-        </div>
-        <div className="Quote">
-          <h5>’’ The best way to predict the future is to create it ’’</h5>
-          <span>Peter Drucker</span>
+
+          <Button text="Read More" Path="/about" />
         </div>
       </div>
     </div>

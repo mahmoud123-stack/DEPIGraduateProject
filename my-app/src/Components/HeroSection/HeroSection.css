@@ -17,6 +17,7 @@
     margin-top: 85px;
     font-style: italic;
     position: relative;
+    align-items: start;
 
 }
 
@@ -49,6 +50,19 @@
     font-weight: 400;
 }
 
+.Landing .Intro p {
+    margin-bottom: 20px;
+}
+
+.Landing>img {
+    position: absolute;
+    width: 159%;
+    right: -88%;
+    z-index: -1;
+    opacity: .5;
+    transform: rotate(-150deg);
+}
+
 .Landing .Intro>span {
     position: absolute;
     top: -8%;
@@ -73,27 +87,6 @@
     border-radius: 50%;
     transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
     box-shadow: 0px 0px 8px #16a34a;
-}
-
-.Landing .Intro button {
-    background-color: var(--color-primary-dark);
-    color: white;
-    font-size: 17px;
-    border: none;
-    padding: 10px 20px;
-    font-style: italic;
-    width: 45%;
-    transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    box-shadow: 0px 0px 20px 2px var(--color-primary-dark);
-    opacity: .8;
-    margin-top: 30px;
-    margin-left: 10px;
-}
-
-.Landing .Intro button:hover {
-    transform: scale(1.1);
-    opacity: 1;
-    border-radius: 50px;
 }
 
 .Landing .Intro img {

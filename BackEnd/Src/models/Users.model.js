@@ -21,12 +21,10 @@ var userSchema = new mongoose.Schema(
 
     phone: {
       type: String,
-      required: true,
     },
 
     age: {
       type: Number,
-      required: true,
     },
 
     country: {
@@ -80,14 +78,6 @@ var userSchema = new mongoose.Schema(
       enum: ["user", "admin"],
     },
 
-    // Password reset fields
-    resetPasswordToken: {
-      type: String,
-    },
-    resetPasswordExpires: {
-      type: Date,
-    },
-
     // Session management
     lastLogin: {
       type: Date,
@@ -95,6 +85,11 @@ var userSchema = new mongoose.Schema(
     },
     lastLogout: {
       type: Date,
+    },
+
+    isOnline: {
+      type: Boolean,
+      default: false,
     },
   },
   {

@@ -3,6 +3,8 @@ import LandingImage from "../../Assets/Thesis-amico.png";
 import IntroIcon from "../../Assets/mortarboard.png";
 import { useCustomCursor } from "../Cursor/Cusror";
 import { Link } from "react-router-dom";
+import Button from "../Button/Button";
+import Blob from "../../Assets/wave.svg";
 
 import "./HeroSection.css";
 
@@ -12,6 +14,8 @@ export default function HeroSection() {
 
   return (
     <div className="Landing">
+      <img src={Blob} alt="" />
+
       <div className="container">
         <div className="Intro">
           <span onMouseEnter={handleHover} onMouseLeave={handleLeave}>
@@ -24,13 +28,8 @@ export default function HeroSection() {
             <span>Jobify</span> guides you to explore your potential, unlock
             your abilities, and embark on a transformative career journey.{" "}
           </p>
-          <button
-            className="btn"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleLeave}
-          >
-            Let's Make a Change
-          </button>
+
+          <Button text="Let's Make a Change" Path="/LogIn" />
         </div>
         <div className="image">
           <img src={LandingImage} alt="" />

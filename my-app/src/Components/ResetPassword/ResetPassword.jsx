@@ -1,13 +1,11 @@
 import React from "react";
-import "./LogIn.css";
-import { Link } from "react-router-dom";
+import "../LogIn/LogIn.css";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useCustomCursor } from "../Cursor/Cusror";
-import LogInImage from "../../Assets/Computer login-amico.svg";
+import LogInImage from "../../Assets/Reset password-amico.svg";
 import axios from "axios";
-import Logo from "../../Assets/Logo Removed (2).png";
 import Blob from "../../Assets/wave.svg";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
   message,
@@ -25,17 +23,8 @@ import {
   Radio,
   Tag,
 } from "antd";
-import {
-  CircleCheckBig,
-  Eye,
-  EyeOff,
-  Undo2,
-  UserRound,
-  Lock,
-  icons,
-  Check,
-} from "lucide-react";
-export default function LogIn() {
+import { CircleCheckBig, Eye, EyeOff, UserRound, Lock } from "lucide-react";
+export default function ResetPassword() {
   const customizeRequiredMark = (label, { required }) => (
     <>
       {required ? (
@@ -53,19 +42,19 @@ export default function LogIn() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [messageApi, MessageHolder] = message.useMessage();
   const [notificationApi, NotificationHolder] = notification.useNotification();
-  const key = "updatable";
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
-
+  const token = useParams();
   const onFinish = async (values) => {
     setLoading(true);
     try {
+      console.log({ token: token.token, newPassword: values.password });
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        values
+        "http://localhost:5000/api/auth/reset-password",
+        { token: token.token, newPassword: values.password }
       );
+      console.log(response.data);
       messageApi.open({
-        key,
         type: "success",
         content: response.data.message,
         duration: 3,
@@ -73,31 +62,22 @@ export default function LogIn() {
       setTimeout(() => {
         messageApi
           .open({
-            key,
             type: "loading",
-            content: "openning dashboard",
-            duration: 4,
+            content: "Let's Sign you in",
+            duration: 2,
           })
           .then(() => {
-            navigate("/dashboard");
+            navigate("/LogIn");
           });
-      }, 1000);
-
+      }, 3000);
       setSuccess(true);
     } catch (err) {
       const errMsg = err.response?.data?.message;
       messageApi.open({
         type: "error",
         content: errMsg || "Something went wrong",
-        duration: 2,
+        duration: 5,
       });
-      setTimeout(() => {
-        messageApi.open({
-          type: "warning",
-          content: "Enter Valid Data",
-          duration: 1,
-        });
-      }, 2000);
     } finally {
       setTimeout(() => {
         setLoading(false);
@@ -113,8 +93,8 @@ export default function LogIn() {
           <div className="form">
             <div className="Text">
               <div>
-                <h2>Welcome Back👋</h2>
-                <p> Glad to see you again let's continue your journey</p>
+                <h2>Reset Your Password</h2>
+                <p> Enter your New Password </p>
               </div>
             </div>
             <Form
@@ -127,70 +107,27 @@ export default function LogIn() {
             >
               <Form.Item
                 required
-                // label="Email"
-                name="email"
+                name="password"
                 rules={[
                   {
                     required: true,
-                    type: "email",
-                    message: "Please input Valid Email!",
+                    type: "password",
+                    message: "Please input password!",
                   },
                 ]}
               >
                 <Input
                   prefix={<UserRound size={20} color="#6b72808c" />}
-                  placeholder="Enter Email"
-                  size="large"
-                  autoComplete="new-email"
-                />
-              </Form.Item>
-              <Form.Item
-                required
-                name="password"
-                rules={[
-                  { required: true, message: "Please input your Password!" },
-                ]}
-              >
-                <Input
-                  prefix={<Lock size={20} color="#6b72808c" />}
-                  type={passwordVisible ? "text" : "password"}
-                  placeholder="Enter Password"
+                  placeholder="Enter new password"
                   size="large"
                   autoComplete="new-password"
-                  suffix={
-                    passwordVisible ? (
-                      <Eye
-                        size={20}
-                        color="#6b72808c"
-                        onClick={() => setPasswordVisible(!passwordVisible)}
-                      />
-                    ) : (
-                      <EyeOff
-                        size={20}
-                        color="#6b72808c"
-                        onClick={() => setPasswordVisible(!passwordVisible)}
-                      />
-                    )
-                  }
                 />
               </Form.Item>
-              <div
-                className="create"
-                style={{
-                  justifyContent: "end",
-                  width: "56%",
-                  position: "relative",
-                  top: "-13px",
-                }}
-              >
-                <p>
-                  <Link to="/ForgotPassword" style={{ color: "#023e8a" }}>
-                    Forgot Password
-                  </Link>
-                </p>
-              </div>
               <Form.Item>
                 <Button
+                  style={{
+                    marginTop: "20px",
+                  }}
                   className="bottn"
                   loading={loading}
                   icon={Success ? <CircleCheckBig /> : ""}
@@ -202,19 +139,8 @@ export default function LogIn() {
                   onMouseEnter={handleHover}
                   onMouseLeave={handleLeave}
                 >
-                  {loading ? "Signing in..." : Success ? "" : "Sign in"}
+                  {loading ? "Sending..." : Success ? "" : "Reset Password"}
                 </Button>
-              </Form.Item>
-
-              <Form.Item>
-                <div className="create">
-                  <p>
-                    Don't have an account ?{" "}
-                    <Link to="/Register" style={{ color: "#023e8a" }}>
-                      Register now!
-                    </Link>
-                  </p>
-                </div>
               </Form.Item>
             </Form>
           </div>

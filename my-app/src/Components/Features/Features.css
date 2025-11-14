@@ -1,5 +1,5 @@
 .Features {
-    height: 100vh;
+    height: 110vh;
 }
 
 .Features .container {
@@ -16,12 +16,13 @@
     justify-content: space-evenly;
     font-family: var(--font-for);
     position: relative;
+    gap: 30px;
 }
 
 .Features .container .content .card {
     display: flex;
     padding: 20px 30px;
-    width: 35%;
+    width: 45%;
     font-size: 17px;
     transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
     align-items: center;

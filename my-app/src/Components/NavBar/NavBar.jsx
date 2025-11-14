@@ -2,17 +2,33 @@ import React from "react";
 import { useState } from "react";
 import Logo from "../../Assets/Logo Removed (2).png";
 import { useCustomCursor } from "../Cursor/Cusror";
-import Blob from "../../Assets/wave.svg";
 import { Link } from "react-router-dom";
+import Button from "../Button/Button";
 
 import "./NavBar.css";
+import { Select } from "antd";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Moon,
+  Sun,
+  Twitter,
+  Github,
+  ChevronDown,
+  MonitorCog,
+} from "lucide-react";
+
 function NavBar() {
+  const HandleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
   const [islogedIn, setIslogedIn] = useState(false);
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
   return (
     <div className="NavBar">
-      <img src={Blob} alt="" />
       <div className="container">
         <div className="Header">
           <ul className="Links">
@@ -24,16 +40,6 @@ function NavBar() {
                 onMouseLeave={handleLeave}
               >
                 Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard"
-                className="btn"
-                onMouseEnter={handleHover}
-                onMouseLeave={handleLeave}
-              >
-                Dashboard
               </Link>
             </li>
             <li>
@@ -57,20 +63,10 @@ function NavBar() {
               </Link>
             </li>
           </ul>
-
           <div className="logo">
             <img src={Logo} alt="" />
           </div>
-
-          <Link to="/LogIn">
-            <button
-              className="btn"
-              onMouseEnter={handleHover}
-              onMouseLeave={handleLeave}
-            >
-              Sign up
-            </button>
-          </Link>
+          <Button text="Get Started" Path="/LogIn" />
         </div>
       </div>
     </div>

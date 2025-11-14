@@ -1,0 +1,101 @@
+.Footer {
+    font-family: var(--font-for);
+    padding-bottom: 20px;
+    padding-top: 20px;
+    opacity: .8;
+    border-top: 1px solid #dddddd8a;
+    font-family: cursive;
+}
+
+.Footer .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.Footer .container .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.Footer .container .content .logo {
+    flex: 1;
+}
+
+.Footer .container .content ul.links {
+    display: flex;
+    flex: 1;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.Footer .container .content ul.links button {
+    font-size: 18px;
+    background-color: white;
+    box-shadow: none;
+    color: var(--color-text-secondary);
+    padding: 0 2px;
+    font-style: normal !important;
+    font-family: cursive;
+}
+
+.Footer .container .content .Btns {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    gap: 40px;
+    align-items: center;
+}
+
+.Footer .container .content .social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.Footer .container .content .social svg {
+    color: var(--color-text-secondary);
+}
+
+.Footer .container .content .mode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--color-text-secondary);
+    border-radius: 25px;
+    margin-top: 3px;
+}
+
+.Footer .container p {
+    color: #6b728084;
+}
+
+.custom-select .ant-select-selector {
+    border-radius: 50px !important;
+}
+
+.ant-select-selection-item span {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-style: normal;
+    color: var(--color-text-secondary);
+    font-family: cursive;
+}
+
+.ant-select-item-option-content span {
+    display: flex;
+    font-style: normal;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--color-text-secondary);
+    font-family: cursive;
+}

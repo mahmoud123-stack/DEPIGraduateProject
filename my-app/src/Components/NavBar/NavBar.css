@@ -4,18 +4,8 @@ body {
 
 .NavBar {
     position: relative;
-    font-family: var(--font-sec);
+    font-family: var(--font-for);
 }
-
-.NavBar>img {
-    position: absolute;
-    width: 154%;
-    right: -75%;
-    z-index: -1;
-    opacity: .5;
-    transform: rotate(-150deg);
-}
-
 
 .Header {
     display: flex;
@@ -25,12 +15,7 @@ body {
 }
 
 .Header .logo {
-    position: relative;
     left: -10%;
-}
-
-.Header .logo img {
-    width: 180px;
 }
 
 .Header .Links {
@@ -61,18 +46,7 @@ body {
 }
 
 .Header button {
-    color: white;
-    opacity: .7;
-    background-color: var(--color-primary-dark);
-    transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
-    z-index: 1000;
     padding: 10px 20px;
-}
-
-.Header button:hover {
-    color: white;
-    background-color: var(--color-primary-dark);
-    transform: scale(1.1);
 }
 
 /* .Logged {

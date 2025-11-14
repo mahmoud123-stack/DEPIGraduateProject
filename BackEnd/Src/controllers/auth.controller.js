@@ -1,8 +1,9 @@
 const UserModel = require("../models/Users.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const cookieParser = require("cookie-parser");
 const crypto = require("crypto");
-
+const nodemailer = require("nodemailer");
 //  Login Controller
 const Login = async (req, res) => {
   try {
@@ -65,7 +66,7 @@ const Login = async (req, res) => {
       httpOnly: true,
       sameSite: "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      path: "/",
+      // secure: true
     };
 
     const refreshCookieOptions = {
@@ -73,6 +74,7 @@ const Login = async (req, res) => {
       sameSite: "strict",
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       path: "/",
+      // secure: true
     };
 
     // Set cookies
@@ -111,8 +113,7 @@ const Login = async (req, res) => {
 
 //  SignUp Controller
 const SignUp = async (req, res) => {
-  let { name, email, password, phone, age } = req.body;
-
+  let { name, email, password } = req.body;
   const ExistingUser = await UserModel.findOne({ email: email });
   if (ExistingUser) {
     return res.status(400).json({ Message: "User Already Exists" });
@@ -124,8 +125,6 @@ const SignUp = async (req, res) => {
     name,
     email,
     password: hashedPassword,
-    phone,
-    age,
   });
 
   NewUser.save()
@@ -133,6 +132,7 @@ const SignUp = async (req, res) => {
       res.status(200).json({ Message: "User Created Successfully" });
     })
     .catch((Err) => {
+      console.log(Err);
       res.status(500).json({ Message: "Error Creating User", Error: Err });
     });
 };
@@ -297,7 +297,6 @@ const changePassword = async (req, res) => {
   }
 };
 
-// Forgot Password - Generate Reset Token
 const forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
@@ -309,23 +308,48 @@ const forgotPassword = async (req, res) => {
         .json({ message: "User with this email does not exist" });
     }
 
-    // Generate reset token
-    const resetToken = crypto.randomBytes(32).toString("hex");
-    const resetTokenExpiry = Date.now() + 3600000; // 1 hour
+    // expire بعد 15 دقيقة
+    const resetToken = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "5m" }
+    );
+    const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
 
-    user.resetPasswordToken = resetToken;
-    user.resetPasswordExpires = resetTokenExpiry;
-    await user.save();
-
-    // In a real application, you would send this token via email
-    // For now, we'll return it in the response (not recommended for production)
-    res.status(200).json({
-      status: true,
-      message: "Password reset token generated",
-      resetToken: resetToken, // Remove this in production
-      expiresIn: "1 hour",
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
     });
+
+    try {
+      await transporter.sendMail({
+        from: `"Career Platform" <${process.env.SMTP_USER}>`,
+        to: user.email,
+        subject: "Reset Password",
+        html: `
+        <p>Hi ${user.name},</p>
+        <p>Click the link below to reset your password:</p>
+        <a href="${resetUrl}">Reset Password</a>
+        <p>This link will expire in 15 minutes.</p>
+        <p>Best regards,</p>
+        <p>The Career Platform Team</p>
+        `,
+      });
+
+      res.status(200).json({
+        status: true,
+        message: "Reset Email Sent! Please check your email",
+      });
+    } catch (err) {
+      console.error("Error sending email:", err);
+    }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
@@ -340,11 +364,8 @@ const resetPassword = async (req, res) => {
         .status(400)
         .json({ message: "Token and new password are required" });
     }
-
-    const user = await UserModel.findOne({
-      resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() },
-    });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await UserModel.findById(decoded.id);
 
     if (!user) {
       return res
@@ -357,8 +378,6 @@ const resetPassword = async (req, res) => {
 
     // Update password and clear reset token
     user.password = hashedPassword;
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpires = undefined;
     await user.save();
 
     res.status(200).json({
@@ -366,6 +385,7 @@ const resetPassword = async (req, res) => {
       message: "Password reset successfully",
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };

@@ -5,7 +5,9 @@ import Features from "../Components/Features/Features";
 import AboutUs from "../Components/AboutUs/AboutUs";
 import HowItWorks from "../Components/HowItWorks/HowItWorks";
 import { Link } from "react-router-dom";
+import CTA from "../Components/CTA/CTA";
 import "../index.css";
+import Footer from "../Components/Footer/Footer";
 export default function HomePage() {
   return (
     <div className="HomePage">
@@ -13,6 +15,8 @@ export default function HomePage() {
       <AboutUs />
       <Features />
       <HowItWorks />
+      <CTA />
+      <Footer />
     </div>
   );
 }
