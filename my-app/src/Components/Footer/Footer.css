@@ -39,7 +39,7 @@
     font-size: 18px;
     background-color: white;
     box-shadow: none;
-    color: var(--color-text-secondary);
+    color: var(--color-text-secondary) !important;
     padding: 0 2px;
     font-style: normal !important;
     font-family: cursive;

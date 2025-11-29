@@ -1,8 +1,8 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import AnimatedOutlet from "./AnimatedOutlet";
 import { CursorProvider } from "../Components/Cursor/Cusror";
 import Navbar from "./NavBar/NavBar";
+import Footer from "../Components/Footer/Footer";
 
 export default function Layout() {
   return (
@@ -12,6 +12,7 @@ export default function Layout() {
         <main>
           <AnimatedOutlet />
         </main>
+        <Footer />
       </CursorProvider>
     </>
   );

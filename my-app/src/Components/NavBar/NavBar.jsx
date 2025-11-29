@@ -3,30 +3,52 @@ import { useState } from "react";
 import Logo from "../../Assets/Logo Removed (2).png";
 import { useCustomCursor } from "../Cursor/Cusror";
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
-
+import ButtonElement from "../Button/ButtonElement";
+import AuthContext from "../../Context/AuthContext";
+import userImage from "../../Assets/user.png";
 import "./NavBar.css";
-import { Select } from "antd";
+import { Select, Avatar, Dropdown, Space, Button, Flex } from "antd";
 import {
   Facebook,
   Instagram,
   Linkedin,
   Moon,
   Sun,
+  User2Icon,
   Twitter,
   Github,
   ChevronDown,
   MonitorCog,
+  icons,
 } from "lucide-react";
+import { useContext } from "react";
+import { UserOutlined } from "@ant-design/icons";
 
 function NavBar() {
-  const HandleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-
-  const [islogedIn, setIslogedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
+
+  const items = [
+    {
+      key: "1",
+      label: "ELement 3",
+    },
+    {
+      key: "2",
+      label: "Element 1",
+    },
+    {
+      key: "3",
+      label: "Element 1",
+    },
+    {
+      key: "4",
+      danger: true,
+      label: "a danger item",
+    },
+  ];
+
   return (
     <div className="NavBar">
       <div className="container">
@@ -66,7 +88,22 @@ function NavBar() {
           <div className="logo">
             <img src={Logo} alt="" />
           </div>
-          <Button text="Get Started" Path="/LogIn" />
+
+          <div className="Btn-Profile-section">
+            {!isLoggedIn ? (
+              <Link className="btn" to="/logIn">
+                <ButtonElement text={"Join"}></ButtonElement>
+              </Link>
+            ) : (
+              <Dropdown menu={{ items }} >
+                <Space>
+                  <div className="UserLogo">
+                    <Avatar size={"large"} icon={<User2Icon />} />
+                  </div>
+                </Space>
+              </Dropdown>
+            )}
+          </div>
         </div>
       </div>
     </div>

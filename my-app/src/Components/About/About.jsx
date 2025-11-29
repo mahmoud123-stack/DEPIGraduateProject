@@ -1,0 +1,174 @@
+import { useCustomCursor } from "../Cursor/Cusror";
+import { motion } from "framer-motion";
+import { message, notification } from "antd";
+import CTA from "../../Components/CTA/CTA";
+import "./About.css";
+export default function About() {
+  const { handleHover, handleLeave } = useCustomCursor();
+  const key = "updatable";
+  const [messageApi, MessageHolder] = message.useMessage();
+  const SVG = (
+    <svg
+      width="185"
+      height="128"
+      viewBox="0 0 185 128"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M48.4716 36.1184C65.1431 32.7418 80.1357 24.7872 95.236 17.9394C102.967 14.4374 110.726 11.0019 118.614 7.83296C119.312 7.54349 120.01 7.25402 120.729 6.95577C124.611 5.43073 128.496 4.59958 132.987 4.60038C135.373 4.48607 137.2 3.50286 139.128 2.35165C142.777 0.414362 146.082 -0.394562 150.717 0.182718C151.412 0.993308 152.107 1.80389 152.822 2.63904C154.749 2.76817 154.749 2.76817 156.761 2.45951C160.481 2.0053 160.481 2.0053 163.63 4.33411C164.31 5.72696 164.989 7.1198 165.689 8.55486C168.591 7.13913 171.494 5.7234 174.485 4.26477C174.711 4.72905 174.938 5.19334 175.171 5.67169C174.188 6.72585 173.205 7.78003 172.192 8.86613C173.628 8.74053 175.064 8.61492 176.543 8.48552C176.996 9.41408 177.449 10.3426 177.916 11.2993C179.367 10.5915 180.818 9.88361 182.314 9.1543C183.009 9.96488 183.703 10.7755 184.419 11.6106C183.436 12.6648 182.453 13.719 181.44 14.8051C181.893 15.7336 182.346 16.6622 182.813 17.6189C180.348 20.5455 177.882 23.472 175.342 26.4872C177.504 26.0077 179.665 25.5282 181.893 25.0341C182.345 25.9627 182.798 26.8912 183.265 27.8479C182.864 28.1488 182.464 28.4498 182.051 28.7598C181.523 29.1634 180.994 29.567 180.45 29.9829C179.927 30.3792 179.405 30.7754 178.866 31.1838C177.344 32.3834 177.344 32.3834 176.23 33.946C175.01 35.4294 173.672 36.1824 172.036 36.9167C170.654 37.5368 170.654 37.5368 169.244 38.1694C169.924 39.5623 170.603 40.9551 171.303 42.3902C170.577 42.7441 169.852 43.098 169.104 43.4627C169.557 44.3912 170.01 45.3198 170.476 46.2765C171.428 46.3869 172.381 46.4972 173.362 46.6109C172.893 47.176 172.425 47.7412 171.943 48.3234C171.331 49.0751 170.72 49.8267 170.09 50.6011C169.483 51.3417 168.876 52.0824 168.25 52.8456C166.849 54.8075 165.995 56.8246 165.065 59.3656C160.655 65.0177 154.907 68.3851 149.188 71.7391C148.644 72.059 148.101 72.3789 147.541 72.7085C147.061 72.9844 146.581 73.2604 146.086 73.5447C144.757 74.4308 143.509 75.4658 142.293 76.5524C138.053 80.0856 133.155 82.3839 128.378 84.8986C127.283 85.4793 126.188 86.06 125.094 86.6408C121.538 88.5211 117.973 90.3821 114.406 92.2373C113.496 92.7106 113.496 92.7106 112.568 93.1935C94.9289 102.356 77.1224 111.15 58.8416 118.987C57.2963 119.656 55.7584 120.341 54.2224 121.029C51.3686 122.305 48.4823 123.51 45.5905 124.705C44.3511 125.268 44.3511 125.268 43.0867 125.842C37.4975 128.042 32.6553 127.392 25.2021 122.356C20.6579 117.836 19.0851 113.556 16.3342 107.197C15.8614 106.122 15.3886 105.048 14.9015 103.94C13.7371 101.29 12.5832 98.6365 11.4314 95.9824C11.9152 95.7464 12.3989 95.5105 12.8974 95.2674C12.3451 94.0438 11.7927 92.8203 11.2237 91.5596C7.33493 82.8453 3.93219 74.8973 1.37242 66.0566C0.919528 65.128 0.466638 64.1994 2.2945e-05 63.2427C6.52125 53.6738 16.3476 47.5161 27.9008 47.893C27.4479 46.9645 26.995 46.0359 26.5284 45.0792C27.9052 44.438 27.9052 44.438 29.3099 43.7838C30.5198 43.21 31.7296 42.6358 32.9392 42.0613C33.5435 41.7811 34.1479 41.501 34.7705 41.2123C46.6492 35.5325 46.6492 35.5325 48.4716 36.1184Z"
+        fill="#315079"
+        fillOpacity="0.4"
+      />
+    </svg>
+  );
+
+  return (
+    <div className="AboutPage">
+      <div className="container">
+        <div className="IntroSection">
+          <div className="HeadLine">
+            <h1>
+              💎About Jobify
+              {SVG}
+            </h1>
+            <p>
+              In a fast-changing world, choosing the right career path isn’t
+              always easy. That’s where Jobify was born — a platform that blends
+              AI with professional guidance to help young people discover
+              themselves and build their future with clarity and confidence.
+            </p>
+          </div>
+        </div>
+        <div className="missionSection d-flex">
+          <div className="HeadLine">
+            <span
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
+              className="d-flex align-items-center gap-2"
+            >
+              🌟 Jobify Mission
+            </span>
+            <p>
+              Empower individuals to understand their strengths, explore the
+              best-fit careers, and build a real, actionable learning journey
+              that leads to a successful and stable future.
+            </p>
+          </div>
+          {/* <div className="image d-flex justify-content-center w-25">
+            <img className="w-100" src={Goal} alt="" />
+          </div> */}
+        </div>
+        <div className="visionSection obosite d-flex">
+          <div className="HeadLine">
+            <span
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
+              className="d-flex align-items-center gap-2"
+            >
+              🚀 Jobify Vision
+            </span>
+            <p>
+              To become the #1 career-planning platform in the Arab world —
+              transforming how people choose and develop their careers, and
+              bridging education with the job market intelligently.
+            </p>
+          </div>
+        </div>
+        <div className="CoreValues d-flex">
+          <div className="HeadLine">
+            <span
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
+              className="d-flex align-items-center gap-2"
+            >
+              🚀 Core Values
+            </span>
+            <p>
+              ✔ Empowerment – We give users the tools and knowledge to design
+              their future. <br /> ✔ Innovation – We leverage AI to analyze data
+              and provide accurate recommendations. <br />
+              ✔ Transparency – Every suggestion is backed by real data and a
+              clear methodology.
+              <br /> ✔ Continuous Growth – We promote lifelong learning and
+              consistent improvement.
+            </p>
+          </div>
+        </div>
+        <div className="What We Offer obosite d-flex">
+          <div className="HeadLine">
+            <span
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
+              className="d-flex align-items-center gap-2"
+            >
+              🧠 What We Offer
+            </span>
+            <p>
+              ✔ Career Analyzer – Personalized insights about your strengths,
+              skills, and interests.
+              <br /> ✔ Learning Path Generator – Smart step-by-step learning
+              plans with recommended courses.
+              <br /> ✔ Salary & Demand Insights – Real market data on salaries
+              and job demand.
+              <br /> ✔ Interview Zone – Real interview questions for every
+              career track.
+            </p>
+          </div>
+        </div>
+        <div className="ShortTerms d-flex">
+          <div className="HeadLine">
+            <span
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
+              className="d-flex align-items-center gap-2"
+            >
+              🎯 Our Short Term Goals
+            </span>
+            <p>
+              ✔ Launch the first version of the platform with AI-powered tools.
+              <br />✔ Build partnerships with educational platforms to integrate
+              learning content.
+            </p>
+          </div>
+        </div>
+        <div className="LongTerms obosite d-flex">
+          <div className="HeadLine">
+            <span
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
+              className="d-flex align-items-center gap-2"
+            >
+              🎯 Our Logn Term Goals
+            </span>
+            <p>
+              ✔ Build a complete professional community in the Arab world.
+              <br /> ✔ Develop a job recommendation system based on real
+              job-market data.
+              <br /> ✔ Launch a multilingual international version.
+            </p>
+          </div>
+        </div>
+        <div className="Imact  d-flex">
+          <div className="HeadLine">
+            <span
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
+              className="d-flex align-items-center gap-2"
+            >
+              🌍 Our Impact
+            </span>
+            <p>
+              Jobify is built to support every student, graduate, or
+              professional who feels stuck or confused. <br /> Our goal is
+              simple: 👉 Everyone deserves to know where they’re heading — and
+              how to get there confidently.
+            </p>
+          </div>
+        </div>
+
+        <CTA />
+      </div>
+    </div>
+  );
+}

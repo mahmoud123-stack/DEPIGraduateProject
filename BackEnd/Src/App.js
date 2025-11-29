@@ -2,7 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const AuthRoute = require("./Routes/auth.routes");
-const chatRoute = require("./Routes/chatRoutes");
+// const chatRoute = require("./Routes/chatRoutes");
+const TrackRoute = require("./Routes/Track.routes");
+// const BlogRoute = require("./Routes/Article.routes");
 // const DashBoardRoute = require("./Routes/DashBoard.routes");
 //  Creating a new express app
 const app = express();
@@ -19,7 +21,8 @@ app.use(
 );
 app.use("/api/auth", AuthRoute);
 // app.use("/api/generate", chatRoute);
+// app.use("/api/Blog", BlogRoute);
 // app.use("/api/DashBoard/", DashBoardRoute);
-
+app.use("/api/", TrackRoute);
 //  Exporting the app
 module.exports = app;

@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import LandingImage from "../../Assets/Thesis-amico.png";
 import IntroIcon from "../../Assets/mortarboard.png";
 import { useCustomCursor } from "../Cursor/Cusror";
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
 import Blob from "../../Assets/wave.svg";
-
+import ButtonElement from "../Button/ButtonElement";
+import AuthContext from "../../Context/AuthContext";
 import "./HeroSection.css";
 
 export default function HeroSection() {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
-
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <div className="Landing">
       <img src={Blob} alt="" />
@@ -29,7 +29,11 @@ export default function HeroSection() {
             your abilities, and embark on a transformative career journey.{" "}
           </p>
 
-          <Button text="Let's Make a Change" Path="/LogIn" />
+          {!isLoggedIn ? (
+            <ButtonElement text="Let's Make a Change" Path="/LogIn" />
+          ) : (
+            <ButtonElement text="Open Your Dashboard" Path="/dashboard" />
+          )}
         </div>
         <div className="image">
           <img src={LandingImage} alt="" />

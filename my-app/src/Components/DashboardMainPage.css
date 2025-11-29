@@ -1,0 +1,252 @@
+.DashBoardMainSection .trackTitle {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.DashBoardMainSection .trackTitle h4 {
+    font-size: 30px;
+}
+
+.DashBoardMainSection .trackTitle span {
+    margin-top: 4px;
+    background-color: #eee;
+    padding: 0 10px;
+    border-radius: 50px;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+}
+
+.DashBoardMainSection .trackTitle::before {
+    content: "";
+    position: absolute;
+    left: -1%;
+    border-radius: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 40%;
+    background-color: var(--color-text-secondary);
+}
+
+.DashBoardMainSection .Description {
+    font-size: 18px;
+    line-height: 2;
+    color: var(--color-text-secondary);
+    font-family: var(--font-for);
+    position: relative;
+    font-style: italic;
+
+}
+
+.DashBoardMainSection .Description .Tags {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.DashBoardMainSection .Description span {
+    background-color: #eee;
+    padding: 0 8px;
+    font-size: 14px;
+    border-radius: 50px;
+    color: var(--color-success);
+}
+
+.JobRoles {
+    font-style: italic;
+}
+
+.SectionHead {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 500;
+    position: relative;
+    width: fit-content;
+    color: var(--color-text-secondary);
+}
+
+
+.SectionHead::before {
+    content: "";
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    width: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    height: 3px;
+    background-color: var(--color-text-secondary);
+}
+
+.JobRoles .Roles {
+    margin: 40px 0;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.JobRoles .Roles .Role {
+    width: 30%;
+    padding: 15px;
+    font-size: 20px;
+    color: var(--color-text-secondary);
+}
+
+.Tools_Techs .Tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
+    gap: 20px;
+    font-style: italic;
+    margin: 40px 0;
+}
+
+.Tools_Techs .Tools .tool {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-medium);
+    padding: 20px 10px;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 20px;
+    justify-content: space-between;
+}
+
+.Tools_Techs .Tools .tool:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.Tools_Techs .Tools .tool span.index {
+    position: absolute;
+    right: 4%;
+    bottom: 3%;
+    color: var(--color-text-secondary);
+    font-size: 20px;
+    opacity: .3;
+}
+
+.Tools_Techs .Tools .tool .info {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Tools_Techs .Tools .tool .info span,
+.Tools_Techs .Tools .tool .toolDesc span.toolClass,
+.RegionSpan {
+    background-color: #eee;
+    padding: 0 10px;
+    border-radius: 50px;
+    color: var(--color-text-secondary);
+}
+
+.Tools_Techs .Tools .tool .info h5 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: 23px;
+    font-weight: 500;
+    position: relative;
+    padding-left: 8px;
+}
+
+.Tools_Techs .Tools .tool .toolDesc {
+    width: 90%;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Tools_Techs .Tools .tool .toolDesc p {
+    display: flex;
+    font-size: 17px;
+    flex-direction: column;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    position: relative;
+}
+
+
+.way::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -2.5%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 80%;
+    border-radius: 50px;
+    background-color: var(--color-text-muted);
+}
+
+.FeatureTrends .Trends {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
+    font-style: italic;
+    margin: 40px 0;
+    gap: 20px;
+}
+
+.FeatureTrends .Trends .TrendDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-medium);
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.FeatureTrends .Trends .TrendDetails:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.FeatureTrends .Trends .TrendDetails span {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    color: var(--color-text-secondary);
+    font-size: 20px;
+    opacity: .3;
+}
+
+.FeatureTrends .Trends .TrendDetails .trend {
+    font-size: 21px;
+    font-weight: 500;
+    position: relative;
+    padding-left: 8px;
+}
+
+.FeatureTrends .Trends .TrendDetails .trend::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -.5%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-text-secondary);
+}
+
+.FeatureTrends .Trends .TrendDetails .Brief {
+    font-size: 18px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 8px;
+    color: var(--color-text-secondary);
+    width: 90%;
+}
+
+.FeatureTrends .Trends .TrendDetails .aboutTrend {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--color-text-secondary);
+    width: 90%;
+}

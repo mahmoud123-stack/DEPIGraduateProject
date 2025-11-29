@@ -1,0 +1,59 @@
+.AboutPage>.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.AboutPage .container .HeadLine {
+    align-items: start;
+    font-family: var(--font-for);
+    font-style: italic;
+    gap: 30px;
+}
+
+.AboutPage .container .HeadLine span {
+    font-size: 25px;
+    color: var(--color-primary-dark);
+    font-weight: bold;
+}
+
+.AboutPage .container .HeadLine p {
+    text-align: start;
+    line-height: 2;
+    padding: 0 20px;
+    position: relative;
+}
+
+.AboutPage .container .HeadLine p span {
+    background-color: transparent !important;
+    font-style: normal;
+
+}
+
+.AboutPage .container .HeadLine p::before {
+    content: "";
+    position: absolute;
+    left: -1%;
+    border-radius: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 80%;
+    background-color: var(--color-text-secondary);
+}
+
+.AboutPage .container .HeadLine p::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-text-secondary);
+    top: 50%;
+    left: -17px;
+    transform: translateY(-50%);
+}
+
+.Imact {
+    margin-bottom: 200px;
+}

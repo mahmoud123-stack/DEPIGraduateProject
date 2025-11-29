@@ -46,12 +46,12 @@ export function CursorProvider({ children }) {
   const handleHover = (e) => {
     isLockedRef.current = true;
     const rect = e.currentTarget.getBoundingClientRect();
-    const padding = 1;
+    const padding = 2;
     const newShape = {
       width: rect.width + padding * 2,
       height: rect.height + padding * 2,
-      borderRadius: "25px",
-      backgroundColor: "rgba(32, 37, 37, 0.3)",
+      borderRadius: "15px",
+      backgroundColor: "rgba(32, 37, 37, 0.17)",
       boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
     };
     const targetX = rect.left - padding;

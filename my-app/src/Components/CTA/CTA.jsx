@@ -1,13 +1,16 @@
 import React from "react";
 import "./CTA.css";
-import { useState } from "react";
-import Button from "../Button/Button";
+import { useState, useContext } from "react";
 import { useCustomCursor } from "../Cursor/Cusror";
 import { motion } from "framer-motion";
 import CTAImage from "../../Assets/Launching-amico.svg";
+import ButtonElement from "../Button/ButtonElement";
+import AuthContext from "../../Context/AuthContext";
+
 export default function CTA() {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <div className="CTA">
@@ -29,8 +32,11 @@ export default function CTA() {
             Join our community of learners and unlock your potential in the
             world of career development.{" "}
           </p>
-
-          <Button text="Get Started" Path="/LogIn" />
+          {!isLoggedIn ? (
+            <ButtonElement text="Join Us Now" Path="/LogIn" />
+          ) : (
+            <ButtonElement text="Continue.." Path="/dashboard" />
+          )}
         </div>
       </div>
     </div>

@@ -140,37 +140,41 @@ const SignUp = async (req, res) => {
 // Logout Controller
 const LogOut = async (req, res) => {
   try {
-    // Get the token from the Authorization header
-    const token = req.header("Authorization")?.replace("Bearer ", "");
-
     // Clear all authentication cookies with proper options
     const cookieOptions = {
       httpOnly: true,
       sameSite: "strict",
-      path: "/",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      // secure: true
     };
 
+    const refreshCookieOptions = {
+      httpOnly: true,
+      sameSite: "strict",
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      path: "/",
+      // secure: true
+    };
     res.clearCookie("token", cookieOptions);
-    res.clearCookie("refreshToken", cookieOptions);
-    res.clearCookie("authToken", cookieOptions);
+    res.clearCookie("refreshToken", refreshCookieOptions);
 
     // If token is provided, verify it and update user's logout time
-    if (token) {
-      try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await UserModel.findById(decoded.id);
+    // if (token) {
+    //   try {
+    //     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    //     const user = await UserModel.findById(decoded.id);
 
-        if (user) {
-          // Update user's last logout time (optional)
-          user.lastLogout = new Date();
-          await user.save();
-          console.log(`User ${user.email} logged out successfully`);
-        }
-      } catch (error) {
-        // Token is invalid/expired, but we still clear cookies
-        console.log("Invalid token during logout, but cookies cleared");
-      }
-    }
+    //     if (user) {
+    //       // Update user's last logout time (optional)
+    //       user.lastLogout = new Date();
+    //       await user.save();
+    //       console.log(`User ${user.email} logged out successfully`);
+    //     }
+    //   } catch (error) {
+    //     // Token is invalid/expired, but we still clear cookies
+    //     console.log("Invalid token during logout, but cookies cleared");
+    //   }
+    // }
 
     // Return success response
     res.status(200).json({
@@ -465,6 +469,14 @@ const deleteAccount = async (req, res) => {
   }
 };
 
+const checkLoggedIn = async (req, res) => {
+  try {
+    res.status(200).json({ LoggedIn: true, message: "User is logged in" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 module.exports = {
   Login,
   SignUp,
@@ -476,4 +488,5 @@ module.exports = {
   resetPassword,
   refreshToken,
   deleteAccount,
+  checkLoggedIn,
 };

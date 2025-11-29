@@ -1,25 +1,7 @@
-import React from "react";
-// import "./HowItWorks.css";
-
 import "./newCSS.css";
-import { Link } from "react-router-dom";
-import { useCustomCursor } from "../Cursor/Cusror";
-import { motion } from "framer-motion";
-import Line from "../../Assets/ease.png";
 import effect from "../../Assets/effect.png";
 
-import {
-  Brain,
-  Target,
-  Briefcase,
-  BarChart,
-  MessageSquare,
-} from "lucide-react";
-
 const HowItWorks = () => {
-  const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
-    useCustomCursor();
-
   const stepsData = [
     {
       number: "1",

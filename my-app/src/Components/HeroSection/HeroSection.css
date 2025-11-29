@@ -41,7 +41,7 @@
 }
 
 .Landing .Intro p,
-.Landing .Intro span {
+.Landing .Intro>span {
     margin: 0;
     font-size: 26px;
     padding-right: 10px;
@@ -52,6 +52,10 @@
 
 .Landing .Intro p {
     margin-bottom: 20px;
+}
+.Landing .Intro a button {
+    font-size: 20px;
+    width: 130%;
 }
 
 .Landing>img {

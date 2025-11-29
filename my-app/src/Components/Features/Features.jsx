@@ -1,23 +1,9 @@
-import React from "react";
 import "./Features.css";
-import { Link } from "react-router-dom";
 import { useCustomCursor } from "../Cursor/Cusror";
-import { motion } from "framer-motion";
 import effect from "../../Assets/effect.png";
-import pattern from "../../Assets/shining.png";
-import shape from "../../Assets/shapes.png";
-import {
-  Brain,
-  Target,
-  Briefcase,
-  BarChart,
-  MessageSquare,
-} from "lucide-react";
+import { Brain, Target, BarChart, MessageSquare } from "lucide-react";
 
 function Features() {
-  const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
-    useCustomCursor();
-
   const SVG = (
     <svg
       width="185"

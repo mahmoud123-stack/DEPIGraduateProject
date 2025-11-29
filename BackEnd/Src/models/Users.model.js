@@ -91,6 +91,10 @@ var userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    hasTrack: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

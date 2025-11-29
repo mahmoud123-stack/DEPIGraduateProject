@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import Button from "../Button/Button";
 import { useCustomCursor } from "../Cursor/Cusror";
 import { color, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Select } from "antd";
+import ButtonElement from "../Button/ButtonElement";
+
 import {
   Facebook,
   Instagram,
@@ -43,17 +44,17 @@ export default function Footer() {
           <ul className="links">
             <li>
               <Link to="/">
-                <Button text="Home"></Button>
+                <ButtonElement text="Home"></ButtonElement>
               </Link>
             </li>
             <li>
               <Link to="/about">
-                <Button text="About"></Button>
+                <ButtonElement text="About"></ButtonElement>
               </Link>
             </li>
             <li>
               <Link to="/blog">
-                <Button text="Blog"></Button>
+                <ButtonElement text="Blog"></ButtonElement>
               </Link>
             </li>
           </ul>

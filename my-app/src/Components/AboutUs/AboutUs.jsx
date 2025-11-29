@@ -5,7 +5,7 @@ import { useCustomCursor } from "../Cursor/Cusror";
 import { motion } from "framer-motion";
 import paperplane from "../../Assets/paper-plane.png";
 import WhoUs2 from "../../Assets/Road Planning.svg";
-import Button from "../Button/Button";
+import ButtonElement from "../Button/ButtonElement";
 
 export default function AboutUs() {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
@@ -37,7 +37,7 @@ export default function AboutUs() {
             </p>
           </div>
 
-          <Button text="Read More" Path="/about" />
+          <ButtonElement text="Read More" Path="/about" />
         </div>
       </div>
     </div>

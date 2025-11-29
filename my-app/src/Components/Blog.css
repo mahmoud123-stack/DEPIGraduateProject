@@ -1,0 +1,221 @@
+.BlogPage {
+    font-family: var(--font-for);
+    font-style: italic;
+}
+
+.BlogPage .container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.container .HeadLine {
+    align-items: start;
+    gap: 30px;
+    font-family: var(--font-for);
+}
+
+.container .HeadLine span {
+    font-size: 25px;
+    color: var(--color-primary-dark);
+    font-weight: bold;
+}
+
+.container .HeadLine p {
+    text-align: start;
+    line-height: 2;
+    padding: 0 20px;
+    position: relative;
+}
+
+.container .HeadLine p span {
+    background-color: transparent !important;
+    font-style: normal;
+
+}
+
+.container .HeadLine p::before {
+    content: "";
+    position: absolute;
+    left: -1%;
+    border-radius: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background-color: var(--color-text-secondary);
+}
+
+.Blogs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.Blogs .Article {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px 20px;
+    gap: 20px;
+    position: relative;
+    width: 48%;
+    border-radius: 10px;
+    padding-left: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.Blogs .Article svg {
+    position: absolute;
+    width: 150px;
+    top: -20%;
+    left: -8%;
+    opacity: .5;
+}
+
+.Blogs .Article .index span {
+    top: 5px;
+    position: absolute;
+    left: 15px;
+    font-size: 25px;
+    color: var(--color-primary-dark);
+    opacity: 0.4;
+}
+
+.title_cat {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.Blogs .Article h3 {
+    margin: 0;
+    font-size: 25px;
+    width: 85%;
+}
+
+.Blogs .Article p {
+    margin: 0;
+    font-size: 18px;
+    color: var(--color-text-secondary);
+}
+
+.Blogs .Article span.category {
+    background: #eee;
+    padding: 0 10px;
+    border-radius: 50px;
+    color: var(--color-text-secondary);
+}
+
+.Blogs .Article div.Tags {
+    display: flex;
+    gap: 4px;
+}
+
+.Blogs .Article div.Tags span {
+    padding: 0 10px;
+    background-color: #16a34a7a;
+    border-radius: 50px;
+    color: white !important;
+    font-size: 13px;
+}
+
+.ant-pagination {
+    color: var(--color-primary-dark);
+    font-style: normal;
+    font-size: 16px;
+}
+
+.ant-pagination-item-link {
+    box-shadow: none;
+}
+
+.ant-pagination-item-link span {
+    color: var(--color-primary-dark);
+    font-size: 16px;
+}
+
+
+/* Article Details Page Styles */
+.ArticleDetailsPage {
+    font-style: italic;
+    font-family: var(--font-for);
+    margin: 100px;
+}
+
+.ArticleDetailsPage .header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.ArticleDetailsPage .header>span {
+    margin-left: 10px;
+    padding: 0 15px;
+    background-color: #eee;
+    color: var(--color-success);
+    border-radius: 50px;
+}
+
+
+.ArticleDetailsPage .header>h2 {
+    color: var(--color-primary-dark);
+    font-size: 40px;
+}
+
+.ArticleDetailsPage .header>.info {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 10px;
+}
+
+.ArticleDetailsPage .header>.info p {
+    color: var(--color-text-secondary);
+    font-size: 25px;
+    position: relative;
+    margin: 0;
+}
+
+.ArticleDetailsPage .header>.info>span {
+    background-color: #16a34a56;
+    color: var(--color-text-secondary);
+    padding: 0 10px;
+    border-radius: 50px;
+    margin-left: 25px;
+    font-size: 17px;
+}
+
+.ArticleDetailsPage .content {
+    display: flex;
+    margin: 0 100px;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.ArticleDetailsPage .content p {
+    color: var(--color-text-secondary);
+    font-size: 25px;
+    line-height: 2;
+}
+
+.ArticleDetailsPage .content>span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ArticleDetailsPage .content>span span {
+    background-color: #eee;
+    color: var(--color-text-secondary);
+    padding: 0 15px;
+    border-radius: 50px;
+    font-size: 17px;
+}

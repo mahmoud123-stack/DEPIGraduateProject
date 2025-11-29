@@ -1,11 +1,7 @@
-import React from "react";
 import "./Button.css";
 import { Link } from "react-router-dom";
 import { useCustomCursor } from "../Cursor/Cusror";
-import { motion } from "framer-motion";
-import { ChevronRight, ArrowRight } from "lucide-react";
-
-export default function Button({ Path, text, icon }) {
+export default function ButtonElement({ Path, text }) {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
 
@@ -16,9 +12,8 @@ export default function Button({ Path, text, icon }) {
       onMouseLeave={handleLeave}
       className="btn"
     >
-      <button>
-        <div>{text}</div>
-        {icon}
+      <button onMouseEnter={handleHover} onMouseLeave={handleLeave}>
+        {text}
       </button>
     </Link>
   );

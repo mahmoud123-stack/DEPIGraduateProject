@@ -1,7 +1,6 @@
-import React from "react";
 import "./LogIn.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useCustomCursor } from "../Cursor/Cusror";
 import LogInImage from "../../Assets/Computer login-amico.svg";
 import axios from "axios";
@@ -35,17 +34,11 @@ import {
   icons,
   Check,
 } from "lucide-react";
+
+import TrackContext from "../../Context/TrackContext";
+import AuthContext from "../../Context/AuthContext";
+
 export default function LogIn() {
-  const customizeRequiredMark = (label, { required }) => (
-    <>
-      {required ? (
-        <Tag color="error">Required</Tag>
-      ) : (
-        <Tag color="warning">optional</Tag>
-      )}
-      {label}
-    </>
-  );
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -57,6 +50,9 @@ export default function LogIn() {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
 
+  const { TrackData, Trackloading } = useContext(TrackContext);
+  const { isLoggedIn, LogOut, isLoading, setIsLoggedIn } =
+    useContext(AuthContext);
   const onFinish = async (values) => {
     setLoading(true);
     try {
@@ -64,26 +60,18 @@ export default function LogIn() {
         "http://localhost:5000/api/auth/login",
         values
       );
-      messageApi.open({
-        key,
-        type: "success",
-        content: response.data.message,
-        duration: 3,
-      });
-      setTimeout(() => {
-        messageApi
-          .open({
-            key,
-            type: "loading",
-            content: "openning dashboard",
-            duration: 4,
-          })
-          .then(() => {
-            navigate("/dashboard");
-          });
-      }, 1000);
-
-      setSuccess(true);
+      messageApi
+        .open({
+          key,
+          type: "success",
+          content: response.data.message,
+          duration: 3,
+        })
+        .then(() => {
+          setSuccess(true);
+          setIsLoggedIn(true);
+          navigate("/EntryPoint");
+        });
     } catch (err) {
       const errMsg = err.response?.data?.message;
       messageApi.open({
