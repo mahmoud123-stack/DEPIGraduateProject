@@ -10,7 +10,7 @@ import Blog from "../Pages/BlogPage";
 import NotFound from "../Pages/NotFoundPage";
 import ForgotPasswordPage from "../Pages/ForgotPasswordPage";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
-import TrackChoosingPage from "../Pages/trackChoosingPage";
+import TrackChoosingPage from "../Pages/TrackChoosingPage";
 import ProtectedRoute from "../Components/ProtectedRoute";
 import DashboardLayout from "../Components/DashboardLayout";
 import LearningPathPage from "../Pages/LearningPathPage";
