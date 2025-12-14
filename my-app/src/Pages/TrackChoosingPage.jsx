@@ -1,5 +1,4 @@
-import TracksChoosing from "../Components/tracksChoosing/tracksChoosing";
-
+import TracksChoosing from "../Components/tracksChoosing/TracksChoosing";
 export default function TrackChoosingPage() {
   return (
     <div>
