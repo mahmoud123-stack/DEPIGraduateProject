@@ -1,7 +1,7 @@
 import { useState } from "react";
 import userDataContext from "./UserDataContext";
 import { useEffect } from "react";
-import axios from "axios";
+import  axios from "axios";
 function UserDataProvider({ children }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

@@ -1,20 +1,16 @@
 import React, { useContext } from "react";
 import AnimatedOutlet from "./AnimatedOutlet";
 import { CursorProvider } from "../Components/Cursor/Cusror";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "../Assets/Logo Removed (2) WithOut String .png";
 import "../index.css";
 import UserDataContext from "../Context/UserDataContext";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../Context/AuthContext";
 import {
   SettingsIcon,
   BellIcon,
   MoonIcon,
-  User2Icon,
-  ChevronsUpDown,
-  BarChart2Icon,
-  LogOut,
-  PowerOffIcon,
-  PowerIcon,
   ChartPie,
   SquaresIntersect,
   Atom,
@@ -23,12 +19,12 @@ import {
 import TrackContext from "../Context/TrackContext";
 import {
   Layout,
-  Button,
   Menu,
   theme,
   Dropdown,
+  message,
   Spin,
-  Space,
+  notification,
   Empty,
 } from "antd";
 import { Link } from "react-router";
@@ -78,54 +74,63 @@ export default function DashboardLayout() {
         </Link>
       ),
     },
-    {
-      key: "4",
-      icon: <Atom size={18} />,
-      label: (
-        <Link
-          to="/dashboard/TrackSkills"
-          style={{
-            textDecoration: "none",
-          }}
-        >
-          Skills
-        </Link>
-      ),
-    },
-    {
-      key: "5",
-      icon: <Atom size={18} />,
-      label: (
-        <Link
-          to="/dashboard/Profile"
-          style={{
-            textDecoration: "none",
-          }}
-        >
-          Account
-        </Link>
-      ),
-    },
+    // {
+    //   key: "4",
+    //   icon: <Atom size={18} />,
+    //   label: (
+    //     <Link
+    //       to="/dashboard/TrackSkills"
+    //       style={{
+    //         textDecoration: "none",
+    //       }}
+    //     >
+    //       Skills
+    //     </Link>
+    //   ),
+    // },
+    // {
+    //   key: "5",
+    //   icon: <Atom size={18} />,
+    //   label: (
+    //     <Link
+    //       to="/dashboard/Profile"
+    //       style={{
+    //         textDecoration: "none",
+    //       }}
+    //     >
+    //       Account
+    //     </Link>
+    //   ),
+    // },
   ];
+
+  const { isLoggedIn, LogOut, setIsLoggedIn } = useContext(AuthContext);
 
   const items = [
     {
       key: "1",
-      label: "Option 1",
+      label: (
+        <Link
+          style={{
+            textDecoration: "none",
+          }}
+          to={"/"}
+        >
+          Home
+        </Link>
+      ),
     },
     {
       key: "2",
-      label: "Option 2",
+      label: "Change Track",
     },
     {
       key: "3",
-      label: "Option 3",
-    },
-    {
-      icon: <PowerIcon size={18} />,
-      key: "4",
       danger: true,
       label: "Logout",
+      onClick: () => {
+        logoutMe();
+      },
     },
   ];
 
@@ -135,7 +140,9 @@ export default function DashboardLayout() {
 
   const { userData, isLoading } = useContext(UserDataContext);
   const { TrackData, Trackloading } = useContext(TrackContext);
-
+  const [messageApi, MessageHolder] = message.useMessage();
+  const navigate = useNavigate();
+  const key = "updatable";
   if (isLoading) {
     return (
       <div
@@ -158,8 +165,31 @@ export default function DashboardLayout() {
     );
   }
 
+  const logoutMe = () => {
+    messageApi
+      .open({
+        key,
+        type: "loading",
+        content: "Logging Out...",
+        duration: 2,
+      })
+      .then(() => {
+        LogOut();
+        navigate("/");
+      })
+      .then(() => {
+        messageApi.open({
+          key,
+          type: "success",
+          content: "Successfully Logged Out",
+          duration: 2,
+        });
+      });
+  };
+
   return (
     <div className="DashBoardLayout">
+      {MessageHolder}
       <CursorProvider>
         <Layout style={{ minHeight: "calc(100vh)", padding: "10px" }}>
           <Sider
@@ -183,16 +213,6 @@ export default function DashboardLayout() {
               </div>
               <Menu defaultSelectedKeys={["1"]} items={Sideritems} />
             </div>
-
-            <Dropdown menu={{ items }} trigger={["click"]}>
-              <div className="Setting">
-                <SettingsIcon size={18} />
-                <span className="sett">
-                  <span>Settings</span>
-                  <ChevronsUpDown size={18} />
-                </span>
-              </div>
-            </Dropdown>
           </Sider>
           <Layout style={{ paddingLeft: "15px " }}>
             <Content
@@ -206,6 +226,7 @@ export default function DashboardLayout() {
                 minHeight: 280,
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,
+                justifyContent: "space-between",
               }}
             >
               <div className="DashPageheader">

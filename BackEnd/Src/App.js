@@ -20,9 +20,8 @@ app.use(
   })
 );
 app.use("/api/auth", AuthRoute);
-// app.use("/api/generate", chatRoute);
-// app.use("/api/Blog", BlogRoute);
-// app.use("/api/DashBoard/", DashBoardRoute);
+app.use("/api/Test", (req, res) => res.send("Hello World"));
+
 app.use("/api/", TrackRoute);
 //  Exporting the app
 module.exports = app;

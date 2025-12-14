@@ -12,7 +12,6 @@ export default function EntryGate() {
   useEffect(() => {
     if (isLoading || Trackloading) {
       console.log("Loading Track and User Dat");
-      return;
     }
     if (!isLoggedIn) {
       console.log("Loggin Bacause i don't know you");
@@ -28,14 +27,6 @@ export default function EntryGate() {
 
     console.log("Going To your dashboard");
     navigate("/dashboard", { replace: true });
+    return;
   }, [[isLoggedIn, isLoading, TrackData, Trackloading, navigate]]);
-
-  return (
-    <div
-      style={{ height: "100vh" }}
-      className="d-flex align-items-center justify-content-center"
-    >
-      <Spin className="Spinner" size="large" />
-    </div>
-  );
 }

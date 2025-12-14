@@ -377,10 +377,9 @@ p {
 
 .ant-layout-sider-children {
     display: flex;
-    position: fixed;
     flex-direction: column;
-    gap: 37%;
     align-items: center;
+    /* justify-content: space-between; */
 }
 
 .DashPageheader {
@@ -459,4 +458,119 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.ChartsContainer {
+    margin-top: 50px;
+    display: grid;
+    row-gap: 100px;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.chartParent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+}
+
+.chartParent h4 {
+    font-size: 20px;
+    color: var(--color-text-muted);
+}
+
+.LearningPath {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.LearningPath>h3 {
+    font-size: 24px;
+    /* font-style: italic; */
+    color: var(--color-text-muted);
+}
+
+.roadMap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.level {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.level h3.LevelName {
+    width: fit-content;
+    padding: 3px 30px;
+    border-radius: 50px;
+    font-style: italic;
+    background-color: #023e8a;
+    color: white;
+}
+
+
+.LearnSteps {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.step {
+    display: flex;
+    width: 49%;
+    padding: 20px;
+    transition: var(--transition-medium);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    gap: 10px;
+    padding-left: 50px;
+    font-style: italic;
+}
+
+.step span {
+    font-size: 25px;
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    color: var(--color-text-muted);
+    opacity: .7;
+}
+
+.step .Head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.step .Head h5 {
+    color: var(--color-primary-dark);
+    font-size: 20px;
+}
+
+.step .Head p {
+    font-size: 17px;
+    line-height: 2;
+    color: var(--color-text-muted);
+    position: relative;
+}
+
+.step .Head p::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -2.5%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 70%;
+    border-radius: 50px;
+    background-color: var(--color-text-muted);
 }

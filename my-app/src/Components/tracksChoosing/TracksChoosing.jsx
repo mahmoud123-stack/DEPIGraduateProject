@@ -44,28 +44,6 @@ export default function TracksChoosing() {
     { key: "devOps", label: "DevOps", icon: <BrainCircuit color="#315079" /> },
   ];
 
-  if (isLoading) {
-    return (
-      <div
-        style={{ height: "100vh" }}
-        className="d-flex align-items-center justify-content-center"
-      >
-        <Spin className="Spinner" size="large" />
-      </div>
-    );
-  }
-
-  if (!userData) {
-    return (
-      <div
-        style={{ height: "100vh" }}
-        className="d-flex align-items-center justify-content-center"
-      >
-        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-      </div>
-    );
-  }
-
   const HandleChoose = async (track) => {
     messageApi.open({
       key,
@@ -132,7 +110,6 @@ export default function TracksChoosing() {
                     // disabled={Trackloading}
                     // loading={Trackloading}
                   >
-                    {track.icon}
                     {track.label}
                   </Button>
                 </div>
