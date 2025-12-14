@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://depi-graduate-project.vercel.app/",
+    origin: "https://depi-graduate-project.vercel.app",
     credentials: true,
   })
 );
