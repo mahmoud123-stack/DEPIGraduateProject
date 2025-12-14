@@ -4,11 +4,13 @@ import axios from "axios";
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  const api = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+  });
   const key = "updatable";
   const CheckLoggedIn = async () => {
     try {
-      await axios.get("http://localhost:5000/api/auth/check", {
+      await api.get("/api/auth/check", {
         withCredentials: true,
       });
       setIsLoggedIn(true);
@@ -20,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const LogOut = async () => {
-    const response = await axios.post("http://localhost:5000/api/auth/logout", {
+    const response = await api.post("/api/auth/logout", {
       withCredentials: true,
     });
     setIsLoading(false);

@@ -1,14 +1,17 @@
 import { useState } from "react";
 import userDataContext from "./UserDataContext";
 import { useEffect } from "react";
-import  axios from "axios";
+import axios from "axios";
 function UserDataProvider({ children }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const api = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+  });
   const getUserData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/me", {
+      const response = await api.get("/api/auth/me", {
         withCredentials: true,
       });
       setUserData(response.data);

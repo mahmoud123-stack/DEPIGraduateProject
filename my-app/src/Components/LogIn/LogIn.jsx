@@ -53,13 +53,15 @@ export default function LogIn() {
   const { TrackData, Trackloading } = useContext(TrackContext);
   const { isLoggedIn, LogOut, isLoading, setIsLoggedIn } =
     useContext(AuthContext);
+
+  const api = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+  });
+
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        values
-      );
+      const response = await api.post("/api/auth/login", values);
       messageApi
         .open({
           key,

@@ -163,13 +163,14 @@ export default function SignUp() {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
 
+  const api = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+  });
+
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
-        values
-      );
+      const response = await api.post("/api/auth/signup", values);
       messageApi.open({
         type: "success",
         content: response?.data?.Message,

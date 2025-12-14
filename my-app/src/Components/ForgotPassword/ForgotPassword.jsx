@@ -45,20 +45,22 @@ export default function ForgotPassword() {
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
 
+  const api = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+  });
+
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
-        { email: values.email }
-      );
+      const response = await api.post("/api/auth/forgot-password", {
+        email: values.email,
+      });
       messageApi.open({
         type: "success",
         content: response.data.message,
         duration: 3,
       });
       setSuccess(true);
-      
     } catch (err) {
       const errMsg = err.response?.data?.message;
       messageApi.open({

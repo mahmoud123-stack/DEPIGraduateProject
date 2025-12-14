@@ -17,12 +17,14 @@ function TrackProvider({ children }) {
       setTrackData(null);
     }
 
+    const api = axios.create({
+      baseURL: import.meta.env.VITE_API_BASE_URL,
+    });
+
     const FetchDashboardTrack = async () => {
       setTrackLoading(true);
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/dashboard-track"
-        );
+        const response = await api.get("/api/dashboard-track");
         setTrackData(response.data);
         setStatus("done");
       } catch (error) {
@@ -38,7 +40,7 @@ function TrackProvider({ children }) {
     setTrackLoading(true);
     setStatus("loading");
     try {
-      const response = await axios.post("http://localhost:5000/api/choose", {
+      const response = await api.post("/api/choose", {
         TrackName: TrackName,
       });
       const CreateTrack = response.data;
@@ -60,12 +62,9 @@ function TrackProvider({ children }) {
     setStatus("loading");
 
     try {
-      const response = await axios.put(
-        "http://localhost:5000/api/update-track",
-        {
-          newTrackName: newTrackName,
-        }
-      );
+      const response = await api.put("/api/update-track", {
+        newTrackName: newTrackName,
+      });
 
       const Updated = response.data;
       setTrackData(Updated);
