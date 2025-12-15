@@ -9,7 +9,7 @@ import { AuthProvider } from "./Context/AuthProvider";
 import TrackProvider from "./Context/TrackProvider";
 import UserDataProvider from "./Context/UserDataProvider";
 import ArticleProvider from "./Context/ArticleProvider";
-import CursorProvider from "./Components/Cursor/Cusror";
+import {CursorProvider} from "./Components/Cursor/Cusror";
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
   <CursorProvider>
