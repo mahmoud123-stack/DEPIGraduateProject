@@ -64,17 +64,17 @@ const Login = async (req, res) => {
     // Set secure cookies
     const cookieOptions = {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      // secure: true
+      secure: true,
     };
 
     const refreshCookieOptions = {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       path: "/",
-      // secure: true
+      secure: true,
     };
 
     // Set cookies
@@ -143,38 +143,20 @@ const LogOut = async (req, res) => {
     // Clear all authentication cookies with proper options
     const cookieOptions = {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      // secure: true
+      secure: true,
     };
 
     const refreshCookieOptions = {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       path: "/",
-      // secure: true
+      secure: true,
     };
     res.clearCookie("token", cookieOptions);
     res.clearCookie("refreshToken", refreshCookieOptions);
-
-    // If token is provided, verify it and update user's logout time
-    // if (token) {
-    //   try {
-    //     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    //     const user = await UserModel.findById(decoded.id);
-
-    //     if (user) {
-    //       // Update user's last logout time (optional)
-    //       user.lastLogout = new Date();
-    //       await user.save();
-    //       console.log(`User ${user.email} logged out successfully`);
-    //     }
-    //   } catch (error) {
-    //     // Token is invalid/expired, but we still clear cookies
-    //     console.log("Invalid token during logout, but cookies cleared");
-    //   }
-    // }
 
     // Return success response
     res.status(200).json({

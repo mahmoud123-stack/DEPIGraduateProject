@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
           withCredentials: true,
         }
       );
+      console.log("User is logged in");
       setIsLoggedIn(true);
       setIsLoading(false);
     } catch (error) {
