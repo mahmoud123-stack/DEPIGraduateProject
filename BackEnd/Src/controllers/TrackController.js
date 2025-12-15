@@ -12,7 +12,7 @@ exports.chooseTrack = async (req, res) => {
   try {
     const GenerateData = await GenerateTrackData(TrackName);
     if (!GenerateData.success) {
-      await res.status(404).json({ msg: "Erorr" });
+      await res.status(404).json({ msg: "Erorr", Error: GenerateData.error });
       console.error(GenerateData.error);
     } else {
       const newTrack = await TrackModel.create({
