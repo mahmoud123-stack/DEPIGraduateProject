@@ -4,15 +4,18 @@ import axios from "axios";
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL,
-  });
+  // const api = axios.create({
+  //   baseURL: import.meta.env.VITE_API_BASE_URL,
+  // });
   const key = "updatable";
   const CheckLoggedIn = async () => {
     try {
-      await api.get("/api/auth/check", {
-        withCredentials: true,
-      });
+      await axios.get(
+        "https://depigraduateproject-production.up.railway.app/api/auth/check",
+        {
+          withCredentials: true,
+        }
+      );
       setIsLoggedIn(true);
       setIsLoading(false);
     } catch (error) {
@@ -22,9 +25,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const LogOut = async () => {
-    const response = await api.post("/api/auth/logout", {
-      withCredentials: true,
-    });
+    const response = await axios.post(
+      "https://depigraduateproject-production.up.railway.app/api/auth/logout",
+      {
+        withCredentials: true,
+      }
+    );
     setIsLoading(false);
     setIsLoggedIn(false);
   };
