@@ -10,21 +10,23 @@ function TrackProvider({ children }) {
   const [TrackData, setTrackData] = useState(null);
   const [Trackloading, setTrackLoading] = useState(false);
   const [Status, setStatus] = useState("idle");
-  // Mount
 
+  // const api = axios.create({
+  //   baseURL: import.meta.env.VITE_API_BASE_URL,
+  // });
+
+  // Mount
   useEffect(() => {
     if (!isLoggedIn) {
       setTrackData(null);
     }
 
-    const api = axios.create({
-      baseURL: import.meta.env.VITE_API_BASE_URL,
-    });
-
     const FetchDashboardTrack = async () => {
       setTrackLoading(true);
       try {
-        const response = await api.get("/api/dashboard-track");
+        const response = await axios.get(
+          "https://depigraduateproject-production.up.railway.app/api/dashboard-track"
+        );
         setTrackData(response.data);
         setStatus("done");
       } catch (error) {
@@ -40,9 +42,12 @@ function TrackProvider({ children }) {
     setTrackLoading(true);
     setStatus("loading");
     try {
-      const response = await api.post("/api/choose", {
-        TrackName: TrackName,
-      });
+      const response = await axios.post(
+        "https://depigraduateproject-production.up.railway.app/api/choose",
+        {
+          TrackName: TrackName,
+        }
+      );
       const CreateTrack = response.data;
       setTrackData(CreateTrack);
       setStatus("done");
