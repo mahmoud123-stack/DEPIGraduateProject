@@ -10,11 +10,6 @@ function TrackProvider({ children }) {
   const [TrackData, setTrackData] = useState(null);
   const [Trackloading, setTrackLoading] = useState(false);
   const [Status, setStatus] = useState("idle");
-
-  // const api = axios.create({
-  //   baseURL: import.meta.env.VITE_API_BASE_URL,
-  // });
-
   // Mount
   useEffect(() => {
     if (!isLoggedIn) {

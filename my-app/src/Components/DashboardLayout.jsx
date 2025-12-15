@@ -143,17 +143,16 @@ export default function DashboardLayout() {
   const [messageApi, MessageHolder] = message.useMessage();
   const navigate = useNavigate();
   const key = "updatable";
-  if (isLoading) {
-    return (
-      <div
-        style={{ height: "100vh" }}
-        className="d-flex align-items-center justify-content-center"
-      >
-        <Spin className="Spinner" size="large" />
-      </div>
-    );
-  }
-
+  // if (isLoading) {
+  //   return (
+  //     <div
+  //       style={{ height: "100vh" }}
+  //       className="d-flex align-items-center justify-content-center"
+  //     >
+  //       <Spin className="Spinner" size="large" />
+  //     </div>
+  //   );
+  // }
   if (Trackloading) {
     return (
       <div
@@ -161,6 +160,19 @@ export default function DashboardLayout() {
         className="d-flex align-items-center justify-content-center"
       >
         <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+      </div>
+    );
+  }
+
+  if (!TrackData) {
+    return (
+      <div
+        style={{ height: "100vh" }}
+        className="d-flex align-items-center justify-content-center"
+      >
+        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+        <p>No Track Selected</p>
+        <Link to="/">Go Back</Link>
       </div>
     );
   }
