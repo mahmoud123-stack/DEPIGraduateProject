@@ -9,17 +9,19 @@ import { AuthProvider } from "./Context/AuthProvider";
 import TrackProvider from "./Context/TrackProvider";
 import UserDataProvider from "./Context/UserDataProvider";
 import ArticleProvider from "./Context/ArticleProvider";
-
+import CursorProvider from "./Components/Cursor/Cusror";
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-  <AuthProvider>
-    <UserDataProvider>
-      <TrackProvider>
-        <ArticleProvider>
-          <RouterProvider router={router} />
-        </ArticleProvider>
-      </TrackProvider>
-    </UserDataProvider>
-  </AuthProvider>
+  <CursorProvider>
+    <AuthProvider>
+      <UserDataProvider>
+        <TrackProvider>
+          <ArticleProvider>
+            <RouterProvider router={router} />
+          </ArticleProvider>
+        </TrackProvider>
+      </UserDataProvider>
+    </AuthProvider>
+  </CursorProvider>
   // </StrictMode>
 );

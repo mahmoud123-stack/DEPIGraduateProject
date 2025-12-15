@@ -166,9 +166,10 @@ export default function DashboardLayout() {
 
   if (!TrackData) {
     return (
+      
       <div
-        style={{ height: "100vh" }}
-        className="d-flex align-items-center justify-content-center"
+      style={{ height: "100vh" }}
+      className="d-flex align-items-center justify-content-center"
       >
         <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
         <p>No Track Selected</p>
