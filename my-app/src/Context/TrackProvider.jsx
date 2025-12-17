@@ -18,6 +18,7 @@ function TrackProvider({ children }) {
 
     const FetchDashboardTrack = async () => {
       setTrackLoading(true);
+      console.log(`Loading Track Data`);
       try {
         const response = await axios.get(
           "https://depigraduateproject-production.up.railway.app/api/dashboard-track",
@@ -28,7 +29,7 @@ function TrackProvider({ children }) {
 
         console.log(` Response from TrackProvider: ${response} `);
       } catch (error) {
-        console.log(error);
+        console.log(`Error from TrackProvider: ${error} `);
       } finally {
         setTrackLoading(false);
       }
