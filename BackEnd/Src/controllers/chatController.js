@@ -1,4 +1,4 @@
-const Parser = require("jsonc-parser");
+const { parse } = require("jsonc-parser");
 
 const GenerateTrackData = async (trackName) => {
   const Prompt = `
@@ -175,9 +175,22 @@ const GenerateTrackData = async (trackName) => {
       data?.candidates?.[0]?.content?.parts?.[0]?.text ||
       "No valid response from model";
 
+    const start = reply.indexOf("{");
+    const end = reply.lastIndexOf("}") + 1;
+
+    if (start === -1 || end === -1) {
+      return {
+        success: false,
+        error: "No JSON found in AI response",
+        raw: reply,
+      };
+    }
+
+    const jsonString = reply.slice(start, end);
+
     let FinalResponse;
     try {
-      FinalResponse = Parser.parse(reply);
+      FinalResponse = parse(jsonString);
     } catch (err) {
       return {
         success: false,
