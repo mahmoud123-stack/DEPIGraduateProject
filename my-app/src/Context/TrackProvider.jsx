@@ -20,7 +20,8 @@ function TrackProvider({ children }) {
       setTrackLoading(true);
       try {
         const response = await axios.get(
-          "https://depigraduateproject-production.up.railway.app/api/dashboard-track"
+          "https://depigraduateproject-production.up.railway.app/api/dashboard-track",
+          { withCredentials: true }
         );
         console.log(`Fetch Dashboard Data response Is :- ${response}`);
         setTrackData(response.data);
