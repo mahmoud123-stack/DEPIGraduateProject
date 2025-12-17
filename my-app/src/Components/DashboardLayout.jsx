@@ -168,31 +168,6 @@ export default function DashboardLayout() {
 
   console.log(userData);
   console.log(TrackData);
-
-  // if (isLoading || Trackloading) {
-  //   return (
-  //     <div
-  //       style={{
-  //         width: "100%",
-  //         height: "100%",
-  //         display: "flex",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //       }}
-  //     >
-  //       <Spin size="large" />
-  //     </div>
-  //   );
-  // }
-
-  // if (!isLoggedIn) {
-  //   navigate("/LogIn");
-  // }
-
-  // if (!TrackData) {
-  //   navigate("/trackChoosing");
-  // }
-
   return (
     // <div className="DashBoardLayout">
     //   {MessageHolder}
@@ -259,7 +234,6 @@ export default function DashboardLayout() {
     //     </Layout>
     //   </CursorProvider>
     // </div>
-
     <p>Welcome</p>
   );
 }

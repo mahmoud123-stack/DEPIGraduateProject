@@ -22,6 +22,7 @@ function TrackProvider({ children }) {
         const response = await axios.get(
           "https://depigraduateproject-production.up.railway.app/api/dashboard-track"
         );
+        console.log(`Fetch Dashboard Data response Is :- ${response}`);
         setTrackData(response.data);
         setStatus("done");
       } catch (error) {
@@ -62,9 +63,12 @@ function TrackProvider({ children }) {
     setStatus("loading");
 
     try {
-      const response = await api.put("/api/update-track", {
-        newTrackName: newTrackName,
-      });
+      const response = await axios.put(
+        "https://depigraduateproject-production.up.railway.app/api/update-track",
+        {
+          newTrackName: newTrackName,
+        }
+      );
 
       const Updated = response.data;
       setTrackData(Updated);
