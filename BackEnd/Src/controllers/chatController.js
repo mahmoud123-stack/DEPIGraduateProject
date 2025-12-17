@@ -1,4 +1,3 @@
-const API_KEY = "AIzaSyAQS45h45Wq4R3nLsDn97VdYLoNdOc0M9E";
 const GenerateTrackData = async (trackName) => {
   const Prompt = `
   You are a specialized AI career & learning advisor. Your task is to generate ALL detailed information about the career track: ${trackName}. Return the response strictly in valid JSON format only with NO explanation or additional text outside the JSON. The JSON must follow this structure EXACTLY: { 'track_overview': 'Brief description of the field and what professionals do.', 'required_skills': { 'technical': ['skill1', 'skill2', 'skill3'], 'soft_skills': ['skill1', 'skill2', 'skill3'] }, 'tools_and_technologies': ['tool1', 'tool2', 'tool3'], 'learning_roadmap': { 'beginner': ['topic1', 'topic2'], 'intermediate': ['topic1', 'topic2'], 'advanced': ['topic1', 'topic2'] }, 'recommended_learning_methods': ['courses', 'projects', 'books', 'tutorials'], 'job_roles': ['role1', 'role2', 'role3'], 'salary_range': 'Typical salary range globally / regionally', 'future_trends': ['trend1', 'trend2'], 'common_mistakes_to_avoid': ['mistake1', 'mistake2'], 'estimated_time_to_master': 'Approximate time based on learning speed' } ,
@@ -156,7 +155,7 @@ const GenerateTrackData = async (trackName) => {
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${process.env.AI_API_KEY}`,
       {
         method: "POST",
         headers: {
