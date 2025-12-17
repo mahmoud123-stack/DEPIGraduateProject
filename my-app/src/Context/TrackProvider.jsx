@@ -42,6 +42,7 @@ function TrackProvider({ children }) {
         "https://depigraduateproject-production.up.railway.app/api/choose",
         {
           TrackName: TrackName,
+          withCredentials: true,
         }
       );
       const CreateTrack = response.data;
@@ -67,6 +68,7 @@ function TrackProvider({ children }) {
         "https://depigraduateproject-production.up.railway.app/api/update-track",
         {
           newTrackName: newTrackName,
+          withCredentials: true,
         }
       );
 
