@@ -186,11 +186,6 @@ const GenerateTrackData = async (trackName) => {
       };
     }
     const jsonString = reply.slice(start, end);
-
-    console.log(jsonString);
-    console.log(data);
-    console.log(reply);
-
     let FinalResponse;
     try {
       FinalResponse = parse(jsonString);
