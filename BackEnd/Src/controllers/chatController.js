@@ -175,22 +175,9 @@ const GenerateTrackData = async (trackName) => {
       data?.candidates?.[0]?.content?.parts?.[0]?.text ||
       "No valid response from model";
 
-    const start = reply.indexOf("{");
-    const end = reply.lastIndexOf("}") + 1;
-
-    if (start === -1 || end === -1) {
-      return {
-        success: false,
-        error: "No JSON found in AI response",
-        raw: reply,
-      };
-    }
-
-    const jsonString = reply.slice(start, end);
-
     let FinalResponse;
     try {
-      FinalResponse = parse(jsonString);
+      FinalResponse = parse(reply);
     } catch (err) {
       return {
         success: false,
