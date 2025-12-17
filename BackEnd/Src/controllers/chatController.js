@@ -1,6 +1,10 @@
+const Parser = require("jsonc-parser");
+
 const GenerateTrackData = async (trackName) => {
   const Prompt = `
-  You are a specialized AI career & learning advisor. Your task is to generate ALL detailed information about the career track: ${trackName}. Return the response strictly in valid JSON format only with NO explanation or additional text outside the JSON. The JSON must follow this structure EXACTLY: { 'track_overview': 'Brief description of the field and what professionals do.', 'required_skills': { 'technical': ['skill1', 'skill2', 'skill3'], 'soft_skills': ['skill1', 'skill2', 'skill3'] }, 'tools_and_technologies': ['tool1', 'tool2', 'tool3'], 'learning_roadmap': { 'beginner': ['topic1', 'topic2'], 'intermediate': ['topic1', 'topic2'], 'advanced': ['topic1', 'topic2'] }, 'recommended_learning_methods': ['courses', 'projects', 'books', 'tutorials'], 'job_roles': ['role1', 'role2', 'role3'], 'salary_range': 'Typical salary range globally / regionally', 'future_trends': ['trend1', 'trend2'], 'common_mistakes_to_avoid': ['mistake1', 'mistake2'], 'estimated_time_to_master': 'Approximate time based on learning speed' } ,
+  You are a specialized AI career & learning advisor. Your task is to generate ALL detailed information about the career track: ${trackName}.  
+  Please answer ONLY in JSON format.
+  Do NOT include any extra text. Return the response strictly in valid JSON format only with NO explanation or additional text outside the JSON. The JSON must follow this structure EXACTLY: { 'track_overview': 'Brief description of the field and what professionals do.', 'required_skills': { 'technical': ['skill1', 'skill2', 'skill3'], 'soft_skills': ['skill1', 'skill2', 'skill3'] }, 'tools_and_technologies': ['tool1', 'tool2', 'tool3'], 'learning_roadmap': { 'beginner': ['topic1', 'topic2'], 'intermediate': ['topic1', 'topic2'], 'advanced': ['topic1', 'topic2'] }, 'recommended_learning_methods': ['courses', 'projects', 'books', 'tutorials'], 'job_roles': ['role1', 'role2', 'role3'], 'salary_range': 'Typical salary range globally / regionally', 'future_trends': ['trend1', 'trend2'], 'common_mistakes_to_avoid': ['mistake1', 'mistake2'], 'estimated_time_to_master': 'Approximate time based on learning speed' } ,
   "BasicInfo": {
        "TrackName": "track_name",
        "track_overview" : "trackOverview",
@@ -166,26 +170,14 @@ const GenerateTrackData = async (trackName) => {
         }),
       }
     );
-
-    console.log(response);
-
     const data = await response.json();
     const reply =
       data?.candidates?.[0]?.content?.parts?.[0]?.text ||
       "No valid response from model";
 
-    const match = reply.match(/\{[\s\S]*\}/);
-    if (!match) {
-      return {
-        success: false,
-        error: "No JSON found in AI response",
-        raw: reply,
-      };
-    }
-
     let FinalResponse;
     try {
-      FinalResponse = JSON.parse(match[0]);
+      FinalResponse = Parser.parse(reply);
     } catch (err) {
       return {
         success: false,
