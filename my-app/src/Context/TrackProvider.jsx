@@ -23,9 +23,10 @@ function TrackProvider({ children }) {
           "https://depigraduateproject-production.up.railway.app/api/dashboard-track",
           { withCredentials: true }
         );
-        console.log(`Fetch Dashboard Data response Is :- ${response}`);
         setTrackData(response.data);
         setStatus("done");
+
+        console.log(` Response from TrackProvider: ${response} `);
       } catch (error) {
         console.log(error);
       } finally {

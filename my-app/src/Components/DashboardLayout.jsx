@@ -198,71 +198,73 @@ export default function DashboardLayout() {
     );
   }
 
+  console.log(` TrackData : ${TrackData}`);
   return (
-    <div className="DashBoardLayout">
-      {MessageHolder}
-      <CursorProvider>
-        <Layout style={{ minHeight: "calc(100vh)", padding: "10px" }}>
-          <Sider
-            className="d-flex flex-column align-items-center "
-            style={{ background: colorBgContainer, padding: "10px" }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "30px",
-              }}
-            >
-              <div
-                className="image d-flex justify-content-center"
-                style={{ width: "100%" }}
-              >
-                <img src={Logo} alt="" className="w-50" />
-              </div>
-              <Menu defaultSelectedKeys={["1"]} items={Sideritems} />
-            </div>
-          </Sider>
-          <Layout style={{ paddingLeft: "15px " }}>
-            <Content
-              style={{
-                padding: "38px 30px",
-                margin: 0,
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                minHeight: 280,
-                background: colorBgContainer,
-                borderRadius: borderRadiusLG,
-                justifyContent: "space-between",
-              }}
-            >
-              <div className="DashPageheader">
-                <div className="text">
-                  <div className="status">
-                    <span></span>
-                    online
-                  </div>
-                  Hello, {userData.data.name}
-                </div>
-                <div className="img_icons">
-                  <span className="d-flex gap-3 align-items-center justify-content-center">
-                    <MoonIcon />
-                    <BellIcon />
-                    <Dropdown menu={{ items }} trigger={["click"]}>
-                      <SettingsIcon />
-                    </Dropdown>
-                  </span>
-                </div>
-              </div>
-              <AnimatedOutlet />
-            </Content>
-          </Layout>
-        </Layout>
-      </CursorProvider>
-    </div>
+    // <div className="DashBoardLayout">
+    //   {MessageHolder}
+    //   <CursorProvider>
+    //     <Layout style={{ minHeight: "calc(100vh)", padding: "10px" }}>
+    //       <Sider
+    //         className="d-flex flex-column align-items-center "
+    //         style={{ background: colorBgContainer, padding: "10px" }}
+    //       >
+    //         <div
+    //           style={{
+    //             display: "flex",
+    //             flexDirection: "column",
+    //             alignItems: "center",
+    //             justifyContent: "center",
+    //             gap: "30px",
+    //           }}
+    //         >
+    //           <div
+    //             className="image d-flex justify-content-center"
+    //             style={{ width: "100%" }}
+    //           >
+    //             <img src={Logo} alt="" className="w-50" />
+    //           </div>
+    //           <Menu defaultSelectedKeys={["1"]} items={Sideritems} />
+    //         </div>
+    //       </Sider>
+    //       <Layout style={{ paddingLeft: "15px " }}>
+    //         <Content
+    //           style={{
+    //             padding: "38px 30px",
+    //             margin: 0,
+    //             height: "100%",
+    //             display: "flex",
+    //             flexDirection: "column",
+    //             gap: "10px",
+    //             minHeight: 280,
+    //             background: colorBgContainer,
+    //             borderRadius: borderRadiusLG,
+    //             justifyContent: "space-between",
+    //           }}
+    //         >
+    //           <div className="DashPageheader">
+    //             <div className="text">
+    //               <div className="status">
+    //                 <span></span>
+    //                 online
+    //               </div>
+    //               Hello, {userData.data.name}
+    //             </div>
+    //             <div className="img_icons">
+    //               <span className="d-flex gap-3 align-items-center justify-content-center">
+    //                 <MoonIcon />
+    //                 <BellIcon />
+    //                 <Dropdown menu={{ items }} trigger={["click"]}>
+    //                   <SettingsIcon />
+    //                 </Dropdown>
+    //               </span>
+    //             </div>
+    //           </div>
+    //           <AnimatedOutlet />
+    //         </Content>
+    //       </Layout>
+    //     </Layout>
+    //   </CursorProvider>
+    // </div>
+    <p>Welcome</p>
   );
 }
