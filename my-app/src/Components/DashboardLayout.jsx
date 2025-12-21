@@ -182,21 +182,21 @@ export default function DashboardLayout() {
   //   );
   // }
 
-  // if (Trackloading) {
-  //   return (
-  //     <div
-  //       style={{
-  //         width: "100%",
-  //         height: "100vh",
-  //         display: "flex",
-  //         alignItems: "center",
-  //         justifyContent: "center",
-  //       }}
-  //     >
-  //       <Spin size="large" />
-  //     </div>
-  //   );
-  // }
+  if (Trackloading) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   console.log(` TrackData : ${TrackData}`);
   return (

@@ -47,6 +47,7 @@ export default function LogIn() {
   const [messageApi, MessageHolder] = message.useMessage();
   const [notificationApi, NotificationHolder] = notification.useNotification();
   const key = "updatable";
+
   const { handleHover, handleLeave, handleTextEnter, handleTextLeave } =
     useCustomCursor();
 

@@ -7,10 +7,8 @@ import React, {
 } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-// 1. إنشاء الـ Context
 const CursorContext = createContext();
 
-// 2. إنشاء "المزوّد" (Provider) الذي سيحتوي على كل المنطق
 export function CursorProvider({ children }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -41,7 +39,6 @@ export function CursorProvider({ children }) {
     return () => window.removeEventListener("mousemove", handleMove);
   }, [mouseX, mouseY]);
 
-  // --- دوال التحكم التي سنشاركها ---
 
   const handleHover = (e) => {
     isLockedRef.current = true;
@@ -97,13 +94,9 @@ export function CursorProvider({ children }) {
     setCursorAnim(newShape);
     cursorSizeRef.current = newShape;
   };
-
-  // القيم التي سنعطيها للتطبيق (الدوال فقط)
   const value = { handleHover, handleLeave, handleTextEnter, handleTextLeave };
-
   return (
     <CursorContext.Provider value={value}>
-      {/* 1. نقوم برسم المؤشر نفسه هنا */}
       <motion.div
         className="cursor"
         key="global-cursor"
@@ -120,7 +113,6 @@ export function CursorProvider({ children }) {
   );
 }
 
-// 3. إنشاء "هوك" (Hook) مخصص لسهولة الاستخدام
 export const useCustomCursor = () => {
   return useContext(CursorContext);
 };
