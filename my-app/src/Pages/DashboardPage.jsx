@@ -19,7 +19,6 @@ export default function DashboardPage() {
       }
     }
   }, [Trackloading, TrackData, navigate]);
-
   return (
     <div className="DashBoardMainSection mt-4 d-flex flex-column gap-4">
       <div className="trackTitle">

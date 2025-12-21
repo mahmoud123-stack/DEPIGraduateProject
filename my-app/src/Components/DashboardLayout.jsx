@@ -245,7 +245,7 @@ export default function DashboardLayout() {
                     <span></span>
                     online
                   </div>
-                  Hello, {userData.data.name}
+                  Hello, {userData.name}
                 </div>
                 <div className="img_icons">
                   <span className="d-flex gap-3 align-items-center justify-content-center">
