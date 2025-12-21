@@ -197,8 +197,6 @@ export default function DashboardLayout() {
       </div>
     );
   }
-
-  console.log(` TrackData : ${TrackData}`);
   return (
     <div className="DashBoardLayout">
       {MessageHolder}
