@@ -1,28 +1,12 @@
-import React from "react";
-import { useState } from "react";
 import Logo from "../../Assets/Logo Removed (2).png";
 import { useCustomCursor } from "../Cursor/Cusror";
 import { Link } from "react-router-dom";
 import ButtonElement from "../Button/ButtonElement";
 import AuthContext from "../../Context/AuthContext";
-import userImage from "../../Assets/user.png";
 import "./NavBar.css";
-import { Select, Avatar, Dropdown, Space, Button, Flex } from "antd";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Moon,
-  Sun,
-  User2Icon,
-  Twitter,
-  Github,
-  ChevronDown,
-  MonitorCog,
-  icons,
-} from "lucide-react";
+import { Avatar, Dropdown, Space } from "antd";
+import { User2Icon } from "lucide-react";
 import { useContext } from "react";
-import { UserOutlined } from "@ant-design/icons";
 
 function NavBar() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -95,7 +79,7 @@ function NavBar() {
                 <ButtonElement text={"Join"}></ButtonElement>
               </Link>
             ) : (
-              <Dropdown menu={{ items }} >
+              <Dropdown menu={{ items }}>
                 <Space>
                   <div className="UserLogo">
                     <Avatar size={"large"} icon={<User2Icon />} />

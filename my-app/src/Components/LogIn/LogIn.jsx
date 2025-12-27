@@ -56,7 +56,9 @@ export default function LogIn() {
     useContext(AuthContext);
 
   const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL,
+    // baseURL: import.meta.env.VITE_API_BASE_URL,
+    baseURL: "http://localhost:5000",
+    withCredentials: true,
   });
 
   const onFinish = async (values) => {

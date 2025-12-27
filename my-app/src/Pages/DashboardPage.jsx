@@ -38,7 +38,7 @@ export default function DashboardPage() {
       <div className="Tools_Techs">
         <span className="SectionHead">Job Roles:</span>
         <div className="Tools">
-          {TrackData.data.job_roles.map((role, index) => {
+          {TrackData.data.JobRoles.map((role, index) => {
             return (
               <div key={index} className="tool">
                 <span className="index">{index + 1}.</span>

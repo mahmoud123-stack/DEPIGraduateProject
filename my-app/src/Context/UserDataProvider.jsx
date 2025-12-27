@@ -6,14 +6,16 @@ function UserDataProvider({ children }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const api = axios.create({
+    // baseURL: import.meta.env.VITE_API_BASE_URL,
+    baseURL: "http://localhost:5000",
+  });
+
   const getUserData = async () => {
     try {
-      const response = await axios.get(
-        "https://depigraduateproject-production.up.railway.app/api/auth/me",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await api.get("/api/auth/me", {
+        withCredentials: true,
+      });
       setUserData(response.data);
       setIsLoading(false);
     } catch (error) {

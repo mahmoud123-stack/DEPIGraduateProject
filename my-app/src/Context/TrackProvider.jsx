@@ -16,13 +16,17 @@ function TrackProvider({ children }) {
       setTrackData(null);
     }
 
+    const api = axios.create({
+      // baseURL: import.meta.env.VITE_API_BASE_URL,
+      baseURL: "http://localhost:5000",
+    });
+
     const FetchDashboardTrack = async () => {
       setTrackLoading(true);
       try {
-        const response = await axios.get(
-          "https://depigraduateproject-production.up.railway.app/api/dashboard-track",
-          { withCredentials: true }
-        );
+        const response = await api.get("/api/dashboard-track", {
+          withCredentials: true,
+        });
         setTrackData(response.data);
         setStatus("done");
       } catch (error) {
