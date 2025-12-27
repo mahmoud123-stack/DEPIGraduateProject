@@ -15,8 +15,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://jobify-career-guide.vercel.app",
-    credentials: true,
+    // origin: "https://jobify-career-guide.vercel.app",
+    // credentials: true,
+    origin: "*",
   })
 );
 app.use("/api/auth", AuthRoute);
